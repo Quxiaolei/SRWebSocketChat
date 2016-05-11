@@ -1,0 +1,6 @@
+framework module Pods_SRWebSocketChat {
+  umbrella header "Pods-SRWebSocketChat-umbrella.h"
+
+  export *
+  module * { export * }
+}
