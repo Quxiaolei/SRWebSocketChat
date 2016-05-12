@@ -7,10 +7,10 @@ Chat use WebSocket of Facebook's SocketRocket
 
 web server: 
 
-```http://127.0.0.1:9000/?message=```
+`http://127.0.0.1:9000/?message=`
 
 app client:
 
-```ws://127.0.0.1:9000/chat```	or
+`ws://127.0.0.1:9000/chat`	or
 
-```http://127.0.0.1:9000/chat```
+`http://127.0.0.1:9000/chat`
