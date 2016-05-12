@@ -67,8 +67,7 @@
     if (self.offlineStyle == SocketOfflineByServer) {
         // 服务器掉线，重连
         [self socketReconnect];
-    }
-    else if (self.offlineStyle == SocketOfflineByUser) {
+    }else if (self.offlineStyle == SocketOfflineByUser) {
         // 如果由用户断开，不进行重连
         return;
     }
