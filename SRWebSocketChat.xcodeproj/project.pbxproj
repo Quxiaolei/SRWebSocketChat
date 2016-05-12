@@ -13,6 +13,7 @@
 		259A22241CE30BA300288C7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 259A22221CE30BA300288C7A /* Main.storyboard */; };
 		259A22261CE30BA300288C7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 259A22251CE30BA300288C7A /* Assets.xcassets */; };
 		259A22291CE30BA300288C7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 259A22271CE30BA300288C7A /* LaunchScreen.storyboard */; };
+		259A22331CE3102600288C7A /* MessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 259A22321CE3102600288C7A /* MessageManager.m */; };
 		323CB109C1D9858DEECDDF5F /* Pods_SRWebSocketChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225822B24FD7E7B403398418 /* Pods_SRWebSocketChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,8 @@
 		259A22281CE30BA300288C7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		259A222A1CE30BA300288C7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		259A22301CE30D3700288C7A /* SRWebSocketChat.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocketChat.pch; sourceTree = "<group>"; };
+		259A22311CE3102600288C7A /* MessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageManager.h; sourceTree = "<group>"; };
+		259A22321CE3102600288C7A /* MessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageManager.m; sourceTree = "<group>"; };
 		6F68E037DEBB12F5BC5EB662 /* Pods-SRWebSocketChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SRWebSocketChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-SRWebSocketChat/Pods-SRWebSocketChat.release.xcconfig"; sourceTree = "<group>"; };
 		FDCA1B72E8994100AB701C25 /* Pods-SRWebSocketChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SRWebSocketChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SRWebSocketChat/Pods-SRWebSocketChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,6 +71,8 @@
 			children = (
 				259A221C1CE30BA300288C7A /* AppDelegate.h */,
 				259A221D1CE30BA300288C7A /* AppDelegate.m */,
+				259A22311CE3102600288C7A /* MessageManager.h */,
+				259A22321CE3102600288C7A /* MessageManager.m */,
 				259A221F1CE30BA300288C7A /* ViewController.h */,
 				259A22201CE30BA300288C7A /* ViewController.m */,
 				259A22221CE30BA300288C7A /* Main.storyboard */,
@@ -228,6 +233,7 @@
 				259A22211CE30BA300288C7A /* ViewController.m in Sources */,
 				259A221E1CE30BA300288C7A /* AppDelegate.m in Sources */,
 				259A221B1CE30BA300288C7A /* main.m in Sources */,
+				259A22331CE3102600288C7A /* MessageManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,8 +347,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "“$(SRCROOT)/SRWebSocketChat/SRWebSocketChat.pch\"";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/SRWebSocketChat/SRWebSocketChat.pch";
 				INFOPLIST_FILE = SRWebSocketChat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = qxl.SRWebSocketChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -355,8 +362,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "“$(SRCROOT)/SRWebSocketChat/SRWebSocketChat.pch\"";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/SRWebSocketChat/SRWebSocketChat.pch";
 				INFOPLIST_FILE = SRWebSocketChat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = qxl.SRWebSocketChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
