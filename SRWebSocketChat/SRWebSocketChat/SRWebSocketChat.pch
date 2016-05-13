@@ -10,4 +10,6 @@
 #define SRWebSocketChat_pch
 #import <AFNetworking/AFNetworking.h>
 #import <SocketRocket/SocketRocket.h>
+#import <FMDB/FMDB.h>
+#import "DataBaseTool.h"
 #endif /* SRWebSocketChat_pch */

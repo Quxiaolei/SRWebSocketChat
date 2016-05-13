@@ -24,7 +24,8 @@
                                 <rect key="frame" x="20" y="309" width="134" height="67"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="134" id="Ije-Mc-eqE"/>
+                                    <constraint firstAttribute="height" constant="67" id="Jdw-NT-QiJ"/>
+                                    <constraint firstAttribute="width" constant="134" id="aox-5V-geR"/>
                                 </constraints>
                                 <state key="normal" title="连接"/>
                                 <connections>
@@ -39,29 +40,53 @@
                                     <action selector="sendClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n6E-OX-jxP"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xH0-vR-fky">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xH0-vR-fky">
                                 <rect key="frame" x="20" y="146" width="330" height="30"/>
                                 <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="C4F-QT-quC">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="C4F-QT-quC">
                                 <rect key="frame" x="20" y="417" width="335" height="184"/>
                                 <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="184" id="LfZ-mn-wwp"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bD-GM-WXZ">
+                                <rect key="frame" x="152" y="227" width="72" height="31"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="26r-Qb-9uP"/>
+                                    <constraint firstAttribute="width" constant="72" id="Z1b-wO-1a3"/>
+                                </constraints>
+                                <state key="normal" title="DB">
+                                    <color key="titleColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="dataBaseBtnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y7O-Hv-Sje"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Xqb-cz-atF" firstAttribute="baseline" secondItem="Sc0-yV-HJM" secondAttribute="firstBaseline" id="0qo-wE-R2X"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Xqb-cz-atF" secondAttribute="trailing" constant="4" id="HPt-vZ-Uvm"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Sc0-yV-HJM" secondAttribute="bottom" constant="291" id="U6a-Vt-PIY"/>
-                            <constraint firstItem="Sc0-yV-HJM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="289" id="acV-Ad-hFm"/>
-                            <constraint firstItem="Sc0-yV-HJM" firstAttribute="top" secondItem="Xqb-cz-atF" secondAttribute="top" id="mzl-j6-jgR"/>
-                            <constraint firstItem="Sc0-yV-HJM" firstAttribute="baseline" secondItem="Xqb-cz-atF" secondAttribute="firstBaseline" id="oDL-au-ffy"/>
-                            <constraint firstItem="Sc0-yV-HJM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="wHo-bn-y0b"/>
-                            <constraint firstItem="Xqb-cz-atF" firstAttribute="leading" secondItem="Sc0-yV-HJM" secondAttribute="trailing" constant="67" id="yp2-MX-9hB"/>
+                            <constraint firstItem="xH0-vR-fky" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="126" id="0m1-ha-kfM"/>
+                            <constraint firstItem="Xqb-cz-atF" firstAttribute="baseline" secondItem="Sc0-yV-HJM" secondAttribute="firstBaseline" id="C0O-1W-JYT"/>
+                            <constraint firstItem="Sc0-yV-HJM" firstAttribute="top" secondItem="Xqb-cz-atF" secondAttribute="top" id="DfQ-ue-BHG"/>
+                            <constraint firstItem="C4F-QT-quC" firstAttribute="top" secondItem="Sc0-yV-HJM" secondAttribute="bottom" constant="41" id="EY3-OD-990"/>
+                            <constraint firstItem="Xqb-cz-atF" firstAttribute="leading" secondItem="Sc0-yV-HJM" secondAttribute="trailing" constant="67" id="HCB-Zz-roG"/>
+                            <constraint firstItem="3bD-GM-WXZ" firstAttribute="centerX" secondItem="C4F-QT-quC" secondAttribute="centerX" id="IrC-Dh-FoA"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="C4F-QT-quC" secondAttribute="bottom" constant="66" id="LaX-eG-isO"/>
+                            <constraint firstItem="xH0-vR-fky" firstAttribute="leading" secondItem="Sc0-yV-HJM" secondAttribute="leading" id="Lhg-dM-3WC"/>
+                            <constraint firstItem="Sc0-yV-HJM" firstAttribute="baseline" secondItem="Xqb-cz-atF" secondAttribute="firstBaseline" id="Qb6-vi-7Qx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xH0-vR-fky" secondAttribute="trailing" constant="9" id="XgB-XU-olR"/>
+                            <constraint firstItem="xH0-vR-fky" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="ZN3-WV-hTi"/>
+                            <constraint firstItem="3bD-GM-WXZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aZY-tj-l2T"/>
+                            <constraint firstItem="Sc0-yV-HJM" firstAttribute="leading" secondItem="C4F-QT-quC" secondAttribute="leading" id="cJ1-em-gOM"/>
+                            <constraint firstItem="3bD-GM-WXZ" firstAttribute="top" secondItem="xH0-vR-fky" secondAttribute="bottom" constant="51" id="ce7-ff-wo1"/>
+                            <constraint firstItem="Xqb-cz-atF" firstAttribute="trailing" secondItem="C4F-QT-quC" secondAttribute="trailing" id="wCT-89-Dnz"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>

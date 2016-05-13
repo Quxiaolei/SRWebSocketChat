@@ -4,5 +4,6 @@ use_frameworks!
 target 'SRWebSocketChat' do
   pod 'AFNetworking', '~> 2.6'
   pod 'SocketRocket', '~> 0.5'
+  pod 'FMDB'
 end
 

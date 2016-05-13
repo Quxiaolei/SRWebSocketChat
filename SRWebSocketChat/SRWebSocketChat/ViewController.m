@@ -95,6 +95,15 @@
 }
 
 #pragma mark - touch
+
+- (IBAction)dataBaseBtnClick:(id)sender {
+    NSLog(@"李磊---");
+    DataBaseTool *DBTool = [DataBaseTool shareInstance];
+    [DBTool getDBTable:@"user"];
+    [DBTool getDBTable:@"chatDetail"];
+    [DBTool getDBTable:@"chatList"];
+    [DBTool insertDataWithObject:nil];
+}
 - (IBAction)connectClick:(id)sender {
     NSLog(@"李磊----准备连接");
     [self connectSocket];

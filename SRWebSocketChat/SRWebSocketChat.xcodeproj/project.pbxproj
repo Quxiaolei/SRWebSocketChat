@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2568955D1CE57F5600C6F202 /* DataBaseTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2568955C1CE57F5600C6F202 /* DataBaseTool.m */; };
 		259A221B1CE30BA300288C7A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 259A221A1CE30BA300288C7A /* main.m */; };
 		259A221E1CE30BA300288C7A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 259A221D1CE30BA300288C7A /* AppDelegate.m */; };
 		259A22211CE30BA300288C7A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 259A22201CE30BA300288C7A /* ViewController.m */; };
@@ -19,6 +20,8 @@
 
 /* Begin PBXFileReference section */
 		225822B24FD7E7B403398418 /* Pods_SRWebSocketChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SRWebSocketChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2568955B1CE57F5600C6F202 /* DataBaseTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseTool.h; sourceTree = "<group>"; };
+		2568955C1CE57F5600C6F202 /* DataBaseTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseTool.m; sourceTree = "<group>"; };
 		259A22161CE30BA300288C7A /* SRWebSocketChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SRWebSocketChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		259A221A1CE30BA300288C7A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		259A221C1CE30BA300288C7A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -48,6 +51,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2568955E1CE57F9000C6F202 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				2568955B1CE57F5600C6F202 /* DataBaseTool.h */,
+				2568955C1CE57F5600C6F202 /* DataBaseTool.m */,
+			);
+			name = DataBase;
+			sourceTree = "<group>";
+		};
+		2568955F1CE57FB100C6F202 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				259A22311CE3102600288C7A /* MessageManager.h */,
+				259A22321CE3102600288C7A /* MessageManager.m */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
 		259A220D1CE30BA300288C7A = {
 			isa = PBXGroup;
 			children = (
@@ -71,10 +92,10 @@
 			children = (
 				259A221C1CE30BA300288C7A /* AppDelegate.h */,
 				259A221D1CE30BA300288C7A /* AppDelegate.m */,
-				259A22311CE3102600288C7A /* MessageManager.h */,
-				259A22321CE3102600288C7A /* MessageManager.m */,
 				259A221F1CE30BA300288C7A /* ViewController.h */,
 				259A22201CE30BA300288C7A /* ViewController.m */,
+				2568955F1CE57FB100C6F202 /* Network */,
+				2568955E1CE57F9000C6F202 /* DataBase */,
 				259A22221CE30BA300288C7A /* Main.storyboard */,
 				259A22251CE30BA300288C7A /* Assets.xcassets */,
 				259A22271CE30BA300288C7A /* LaunchScreen.storyboard */,
@@ -231,6 +252,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2568955D1CE57F5600C6F202 /* DataBaseTool.m in Sources */,
 				259A22211CE30BA300288C7A /* ViewController.m in Sources */,
 				259A221E1CE30BA300288C7A /* AppDelegate.m in Sources */,
 				259A221B1CE30BA300288C7A /* main.m in Sources */,
