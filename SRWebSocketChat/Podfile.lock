@@ -24,17 +24,23 @@ PODS:
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
   - SocketRocket (0.5.0)
+  - YTKKeyValueStore (0.1.2):
+    - FMDB (~> 2.0)
+  - YYModel (1.0.3)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.6)
-  - FMDB
   - SocketRocket (~> 0.5)
+  - YTKKeyValueStore
+  - YYModel
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   SocketRocket: 2c51efccd2d73c99a923407ca4b06e7e9da95dbf
+  YTKKeyValueStore: 4d002941540dd5108fa23009b71e0f2f937f7a0f
+  YYModel: 63142c2f07c5c8c9d1c261689cf3827ea6ab2886
 
-PODFILE CHECKSUM: 9a1771cdec04b3f4252d05d9c7dd4f7f8082d8db
+PODFILE CHECKSUM: 62a145b65b9a563b06065f12b7b835a56f4e56f6
 
 COCOAPODS: 1.0.0.beta.6

@@ -12,4 +12,6 @@
 #import <SocketRocket/SocketRocket.h>
 #import <FMDB/FMDB.h>
 #import "DataBaseTool.h"
+#import <YTKKeyValueStore/YTKKeyValueStore.h>
+#import <YYModel/YYModel.h>
 #endif /* SRWebSocketChat_pch */
