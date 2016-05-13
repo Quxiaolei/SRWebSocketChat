@@ -12,9 +12,9 @@
 @interface ViewController ()
 <SRWebSocketDelegate
 >
-@property (nonatomic,strong)SRWebSocket *webSocket;
-@property (weak, nonatomic) IBOutlet UITextField *sendMsgTextField;
-@property (weak, nonatomic) IBOutlet UITextView *receiveMsgTextView;
+@property (nonatomic,strong) SRWebSocket *webSocket;
+@property (weak, nonatomic ) IBOutlet UITextField *sendMsgTextField;
+@property (weak, nonatomic ) IBOutlet UITextView  *receiveMsgTextView;
 @end
 
 @implementation ViewController
@@ -42,7 +42,6 @@
 //    }
 //}
 
-
 - (void)connectSocket
 {
     /**
@@ -56,8 +55,9 @@
 ////    ws://172.168.1.49:9006/ws/bind?sid=a&did=daifw
 //    //Facebook服务
 ////    ws://127.0.0.1:9000/chat
-    _webSocket = [[SRWebSocket alloc]initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://172.16.101.39:9000/chat"]]];
-     _webSocket.delegate =self;
+//    http://127.0.0.1/
+    _webSocket = [[SRWebSocket alloc]initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://127.0.0.1:9000/chat"]]];
+     _webSocket.delegate = self;
      [_webSocket open];
     
 //    MessageManager *messageManager = [MessageManager sharedInstance];
@@ -86,26 +86,28 @@
 }
 - (void)webSocket:(SRWebSocket *)webSocket didReceivePong:(NSData *)pongPayload
 {
-    
+    //TODO: 测试ping/pong
 }
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message
 {
-    NSLog(@"接受消息:\n %@",message);
+    NSLog(@"接收消息:\n %@",message);
     _receiveMsgTextView.text = (NSString *)message;
 }
 
 #pragma mark - touch
 - (IBAction)connectClick:(id)sender {
+    NSLog(@"李磊----准备连接");
     [self connectSocket];
 }
 - (IBAction)sendClick:(id)sender {
     
 //    [[MessageManager sharedInstance].socket send:@"发送消息test"];
 //    return ;
-    
+    NSLog(@"李磊----准备发送消息");
     if (_webSocket == nil || _webSocket.readyState >= 2) {
 //        UIAlertAction *alert = [UIAlertAction alloc]init;
         [[[UIAlertView alloc]initWithTitle:@"提示" message:@"请先连接" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil] show];
+        return ;
     }
     
     NSString *sendString = @"来自我的iPhone";

@@ -11,6 +11,8 @@ web server:
 
 app client:
 
-`ws://127.0.0.1:9000/chat`	or
+`ws://127.0.0.1:9000/chat`	
+
+or
 
 `http://127.0.0.1:9000/chat`

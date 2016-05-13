@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bucket
-   type = "0"
+   type = "1"
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SRWebSocketChat/ViewController.m"
-            timestampString = "484738807.774268"
+            filePath = "&#x670d;&#x52a1;&#x7aef;/ServerSocket.m"
+            timestampString = "478002397.347151"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "-webSocketDidOpen:"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "-open"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SRWebSocketChat/ViewController.m"
-            timestampString = "484738807.774268"
+            filePath = "&#x670d;&#x52a1;&#x7aef;/ServerSocket.m"
+            timestampString = "478002398.051116"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "-webSocket:didFailWithError:"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "-open"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SRWebSocketChat/ViewController.m"
-            timestampString = "484738807.774268"
+            filePath = "&#x670d;&#x52a1;&#x7aef;/ServerSocket.m"
+            timestampString = "478002400.928268"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "-webSocket:didCloseWithCode:reason:wasClean:"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "-socket:didAcceptNewSocket:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SRWebSocketChat/ViewController.m"
-            timestampString = "484739127.630112"
+            filePath = "&#x670d;&#x52a1;&#x7aef;/ServerSocket.m"
+            timestampString = "478002405.019344"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "-sendClick:"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "-socket:didReadData:withTag:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

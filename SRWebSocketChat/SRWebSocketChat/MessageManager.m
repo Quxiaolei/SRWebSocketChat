@@ -74,7 +74,7 @@
 }
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message
 {
-    NSLog(@"接受消息:\n %@",message);
+    NSLog(@"接收消息:\n %@",message);
     self.receivedMessage = (NSString *)message;
     
     NSData *data = [message dataUsingEncoding:NSUTF8StringEncoding];

@@ -143,6 +143,7 @@
 				TargetAttributes = {
 					259A22151CE30BA300288C7A = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = XRMC2ZE3HJ;
 					};
 				};
 			};
@@ -346,12 +347,13 @@
 			baseConfigurationReference = FDCA1B72E8994100AB701C25 /* Pods-SRWebSocketChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SRWebSocketChat/SRWebSocketChat.pch";
 				INFOPLIST_FILE = SRWebSocketChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = qxl.SRWebSocketChat;
+				PRODUCT_BUNDLE_IDENTIFIER = qxlTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -361,12 +363,13 @@
 			baseConfigurationReference = 6F68E037DEBB12F5BC5EB662 /* Pods-SRWebSocketChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SRWebSocketChat/SRWebSocketChat.pch";
 				INFOPLIST_FILE = SRWebSocketChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = qxl.SRWebSocketChat;
+				PRODUCT_BUNDLE_IDENTIFIER = qxlTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
