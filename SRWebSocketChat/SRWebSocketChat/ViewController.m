@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "MessageManager.h"
+#import "User.h"
 
 @interface ViewController ()
 <SRWebSocketDelegate
@@ -99,10 +100,24 @@
 - (IBAction)dataBaseBtnClick:(id)sender {
     NSLog(@"李磊---");
     DataBaseTool *DBTool = [DataBaseTool shareInstance];
-    [DBTool getDBTable:@"user"];
-    [DBTool getDBTable:@"chatDetail"];
-    [DBTool getDBTable:@"chatList"];
-    [DBTool insertDataWithObject:nil];
+    
+    [DBTool createDBTable:@"CREATE TABLE IF NOT EXISTS user (id integer PRIMARY KEY AUTOINCREMENT, userID text NOT NULL,userName text,sex boolean,other text);"];
+    [DBTool createDBTable:@"CREATE TABLE IF NOT EXISTS chatDetail (id integer PRIMARY KEY AUTOINCREMENT, userID text NOT NULL,userName text,sex boolean,other text);"];
+    [DBTool createDBTable:@"CREATE TABLE IF NOT EXISTS chatList (id integer PRIMARY KEY AUTOINCREMENT, userID text NOT NULL,userName text,sex boolean,other text);"];
+    
+    for (int i= 0; i< 5; i++) {
+        User *user = [[User alloc]init];
+        user.userID = [NSString stringWithFormat:@"%d",i];
+        user.userName = [NSString stringWithFormat:@"%d 张三",i];
+        user.sex = arc4random()%2;
+        user.other = [NSString stringWithFormat:@"%d 其他",i];;
+        
+        [DBTool insertDataWithTable:[NSString stringWithFormat:@"INSERT INTO user (userID,userName,other,sex) VALUES ('%@', '%@','%@','%ld')",user.userID,user.userName,user.other,(long)user.sex]];
+    }
+    
+    NSMutableArray *arry = [DBTool queryDataWithTable:@"SELECT * FROM user WHERE userID = 1" withDataObject:@"User"];
+    
+//    [NSString stringWithFormat:@"INSERT INTO user (userID,userName,other) VALUES ('%@', '%@','%@')",@"1",@"张三",@"其他"]
 }
 - (IBAction)connectClick:(id)sender {
     NSLog(@"李磊----准备连接");

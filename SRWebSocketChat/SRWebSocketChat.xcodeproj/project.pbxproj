@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2568955D1CE57F5600C6F202 /* DataBaseTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2568955C1CE57F5600C6F202 /* DataBaseTool.m */; };
+		256895621CE5B70F00C6F202 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 256895611CE5B70F00C6F202 /* User.m */; };
 		259A221B1CE30BA300288C7A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 259A221A1CE30BA300288C7A /* main.m */; };
 		259A221E1CE30BA300288C7A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 259A221D1CE30BA300288C7A /* AppDelegate.m */; };
 		259A22211CE30BA300288C7A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 259A22201CE30BA300288C7A /* ViewController.m */; };
@@ -22,6 +23,8 @@
 		225822B24FD7E7B403398418 /* Pods_SRWebSocketChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SRWebSocketChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2568955B1CE57F5600C6F202 /* DataBaseTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseTool.h; sourceTree = "<group>"; };
 		2568955C1CE57F5600C6F202 /* DataBaseTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseTool.m; sourceTree = "<group>"; };
+		256895601CE5B70F00C6F202 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		256895611CE5B70F00C6F202 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		259A22161CE30BA300288C7A /* SRWebSocketChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SRWebSocketChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		259A221A1CE30BA300288C7A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		259A221C1CE30BA300288C7A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -56,6 +59,8 @@
 			children = (
 				2568955B1CE57F5600C6F202 /* DataBaseTool.h */,
 				2568955C1CE57F5600C6F202 /* DataBaseTool.m */,
+				256895601CE5B70F00C6F202 /* User.h */,
+				256895611CE5B70F00C6F202 /* User.m */,
 			);
 			name = DataBase;
 			sourceTree = "<group>";
@@ -254,6 +259,7 @@
 			files = (
 				2568955D1CE57F5600C6F202 /* DataBaseTool.m in Sources */,
 				259A22211CE30BA300288C7A /* ViewController.m in Sources */,
+				256895621CE5B70F00C6F202 /* User.m in Sources */,
 				259A221E1CE30BA300288C7A /* AppDelegate.m in Sources */,
 				259A221B1CE30BA300288C7A /* main.m in Sources */,
 				259A22331CE3102600288C7A /* MessageManager.m in Sources */,

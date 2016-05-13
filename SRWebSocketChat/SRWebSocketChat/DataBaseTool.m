@@ -7,6 +7,7 @@
 //
 
 #import "DataBaseTool.h"
+#import <objc/runtime.h>
 
 @implementation DataBaseTool
 {
@@ -24,21 +25,30 @@ static DataBaseTool *_instance;
     });
     return _instance;
 }
-- (BOOL)getDBTable:(NSString *)tableName
+/*!
+ *  @author madis, 16-05-13 15:05:37
+ *
+ *  创建表
+ *
+ *  @param tableName 表名字
+ *
+ *  @return bool Value
+ */
+- (BOOL)createDBTable:(NSString *)sqlString
 {
     if(!_dataBase){
         NSString *doc = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
         NSString *filePath = [doc stringByAppendingPathComponent:@"chat.sqlite"];
-        NSLog(@"李磊---%@",filePath);
+//        NSLog(@"李磊---%@",filePath);
         _dataBase = [FMDatabase databaseWithPath:filePath];
     }
     
     if ([_dataBase open]) {
-        BOOL result=[_dataBase executeUpdate:[NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS '%@' (id integer PRIMARY KEY AUTOINCREMENT, userID text NOT NULL,userName text,sex blob,other text);",tableName]];
+        BOOL result=[_dataBase executeUpdate:sqlString];
         if (result) {
-            NSLog(@"创表%@成功",tableName);
+            NSLog(@"创表成功");
         }else{
-            NSLog(@"创表%@失败",tableName);
+            NSLog(@"创表失败");
             return NO;
         }
     }else{
@@ -48,13 +58,13 @@ static DataBaseTool *_instance;
     [_dataBase close];
     return YES;
 }
-- (BOOL)insertDataWithObject:(id *)object
+- (BOOL)insertDataWithTable:(NSString *)sqlString
 {
     if (![_dataBase open]) {
         [_dataBase close];
         return NO;
     }else{
-        BOOL res = [_dataBase executeUpdate:[NSString stringWithFormat:@"INSERT INTO user (userID,userName,other) VALUES ('%@', '%@','%@')",@"1",@"张三",@"其他"]];
+        BOOL res = [_dataBase executeUpdate:sqlString];
         if (res) {
             NSLog(@"成功插入数据");
         } else {
@@ -65,11 +75,11 @@ static DataBaseTool *_instance;
     return YES;
 }
 
-- (BOOL)deleteDataWithCreateTime:(NSString *)string
+- (BOOL)deleteDataWithTable:(NSString *)sqlString
 {
     if ([_dataBase open]) {
-        // 1.执行查询语句
-        BOOL res = [_dataBase executeUpdate:@"DELETE FROM localData WHERE createTime = ?;",string];
+//        @"DELETE FROM localData WHERE createTime = ?;",string]
+        BOOL res = [_dataBase executeUpdate:sqlString];
         if (!res) {
             NSLog(@"删除失败");
         } else {
@@ -80,42 +90,39 @@ static DataBaseTool *_instance;
     return YES;
 }
 
-- (NSMutableArray *)queryDataWithString:(NSString *)string
+- (NSMutableArray *)queryDataWithTable:(NSString *)sqlString withDataObject:(NSString *)object
 {
     NSMutableArray * arry = [[NSMutableArray alloc]initWithCapacity:0];
-    //1.获得数据库文件的路径
-    NSString *doc=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *filePath= [doc stringByAppendingPathComponent:@"LoanSQL.sqlite"];
-    
-    //2.获得数据库
-    FMDatabase *db=[FMDatabase databaseWithPath:filePath];
-    if ([db open]) {
+    if ([_dataBase open]) {
         // 1.执行查询语句
         //@"SELECT * FROM localData WHERE createTime = ?"
-        FMResultSet * resultSet = [db executeQuery:string];
+        FMResultSet * resultSet = [_dataBase executeQuery:sqlString];
         // 2.遍历结果
         while ([resultSet next]) {
-//            SMLoan * loan = [[SMLoan alloc]init];
-//            loan.ID = [resultSet intForColumn:@"id"];
-//            loan.createTime = [[resultSet stringForColumn:@"createTime"]integerValue];
-//            loan.myLoanID = [resultSet stringForColumn:@"loanID"];
-//            //            loan.myLoanID = [NSString stringWithFormat:@"%ld%d%d%d",(long)loan.createTime,arc4random()%10,arc4random()%10,arc4random()%10];
-//            //            loan.loanID = [NSString stringWithFormat:@"%ld%d%d%d",(long)loan.createTime,arc4random()%10,arc4random()%10,arc4random()%10];
-//            loan.file1 = [resultSet dataForColumn:@"file1"];
-//            loan.file2 = [resultSet dataForColumn:@"file2"];
-//            loan.file3 = [resultSet dataForColumn:@"file3"];
-//            loan.file4 = [resultSet dataForColumn:@"file4"];
-//            loan.file5 = [resultSet dataForColumn:@"file5"];
-//            //6为数组的data类型
-//            loan.file6 = [resultSet dataForColumn:@"file6"];
-//            loan.mutableImageData = [resultSet dataForColumn:@"mutableImageData"];
-//            loan.tagArrayData = [resultSet dataForColumn:@"tagArrayData"];
-//            //            NSLog(@"%ld %ld %@", (long)loan.ID, (long)loan.createTime, loan.file1);
-//            [arry addObject:loan];
+            // 类名
+            const char *className = [object cStringUsingEncoding:NSASCIIStringEncoding];
+            // 从一个字串返回一个类
+            Class newClass = objc_getClass(className);
+            if (!newClass) {
+                // 创建一个类
+                Class superClass = [NSObject class];
+                newClass = objc_allocateClassPair(superClass, className, 0);
+                // 注册你创建的这个类
+                objc_registerClassPair(newClass);
+            }
+            // 创建对象
+            id instance = [[newClass alloc] init];
+            [instance setValue:[resultSet stringForColumn:@"userID"] forKey:@"userID"];
+            [instance setValue:[resultSet stringForColumn:@"userName"] forKey:@"userName"];
+            BOOL sex = [resultSet boolForColumn:@"sex"];
+//            [sex intValue];
+            [instance setValue:[NSNumber numberWithBool:sex] forKey:@"sex"];
+            [instance setValue:[resultSet stringForColumn:@"other"] forKeyPath:@"other"];
+            [arry addObject:instance];
         }
         [resultSet close];
     }
-    [db close];
+    [_dataBase close];
     return arry;
 }
 

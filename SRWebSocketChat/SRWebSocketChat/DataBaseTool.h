@@ -14,17 +14,15 @@
 //创建数据库
 //- (BOOL)getDBFilePathWithFileName:(NSString *)fileName;
 //创建表(同时创建数据库)
-- (BOOL)getDBTable:(NSString *)tableName;
+- (BOOL)createDBTable:(NSString *)sqlString;
 //插入数据
-- (BOOL)insertDataWithObject:(id *)object;
+- (BOOL)insertDataWithTable:(NSString *)sqlString;
 //删除语句
-- (BOOL)deleteDataWithCreateTime:(NSString *)string;
-//- (SMLoan *)queryDataWithString:(NSString *)string;
+- (BOOL)deleteDataWithTable:(NSString *)sqlString;
 
 //- (BOOL)insertDataWithStringArray:(NSMutableArray *)array;
 //查询数据
-- (NSMutableArray *)queryDataWithString:(NSString *)string;
-
+- (NSMutableArray *)queryDataWithTable:(NSString *)sqlString withDataObject:(NSString *)object;
 
 //归档
 - (BOOL)setUserDefaultsWithObjectArray:(NSArray *)objectArray keyArray:(NSArray *)keyArray;
