@@ -23,6 +23,8 @@
 		25F6511B1CE738EA00A13387 /* NetWorkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25F651191CE738EA00A13387 /* NetWorkViewController.xib */; };
 		25F6511E1CE73AD200A13387 /* DBTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F6511D1CE73AD200A13387 /* DBTestViewController.m */; };
 		25F651221CE73CEF00A13387 /* ChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F651201CE73CEF00A13387 /* ChatListViewController.m */; };
+		25F651251CE7466900A13387 /* chatList.json in Resources */ = {isa = PBXBuildFile; fileRef = 25F651241CE7466900A13387 /* chatList.json */; };
+		25F651271CE7499E00A13387 /* chatDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = 25F651261CE7499E00A13387 /* chatDetail.json */; };
 		323CB109C1D9858DEECDDF5F /* Pods_SRWebSocketChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225822B24FD7E7B403398418 /* Pods_SRWebSocketChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +58,8 @@
 		25F6511D1CE73AD200A13387 /* DBTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTestViewController.m; sourceTree = "<group>"; };
 		25F6511F1CE73CEF00A13387 /* ChatListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatListViewController.h; sourceTree = "<group>"; };
 		25F651201CE73CEF00A13387 /* ChatListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatListViewController.m; sourceTree = "<group>"; };
+		25F651241CE7466900A13387 /* chatList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chatList.json; sourceTree = "<group>"; };
+		25F651261CE7499E00A13387 /* chatDetail.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chatDetail.json; sourceTree = "<group>"; };
 		6F68E037DEBB12F5BC5EB662 /* Pods-SRWebSocketChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SRWebSocketChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-SRWebSocketChat/Pods-SRWebSocketChat.release.xcconfig"; sourceTree = "<group>"; };
 		FDCA1B72E8994100AB701C25 /* Pods-SRWebSocketChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SRWebSocketChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SRWebSocketChat/Pods-SRWebSocketChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,6 +154,8 @@
 		25F651071CE71EF700A13387 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				25F651241CE7466900A13387 /* chatList.json */,
+				25F651261CE7499E00A13387 /* chatDetail.json */,
 				25F651031CE71EF000A13387 /* user.json */,
 				25F651041CE71EF000A13387 /* weibo.json */,
 			);
@@ -235,10 +241,12 @@
 			files = (
 				25F651051CE71EF000A13387 /* user.json in Resources */,
 				25F6511B1CE738EA00A13387 /* NetWorkViewController.xib in Resources */,
+				25F651271CE7499E00A13387 /* chatDetail.json in Resources */,
 				259A22261CE30BA300288C7A /* Assets.xcassets in Resources */,
 				25F651061CE71EF000A13387 /* weibo.json in Resources */,
 				25F651131CE736F000A13387 /* LaunchScreen.storyboard in Resources */,
 				259A22241CE30BA300288C7A /* Main.storyboard in Resources */,
+				25F651251CE7466900A13387 /* chatList.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

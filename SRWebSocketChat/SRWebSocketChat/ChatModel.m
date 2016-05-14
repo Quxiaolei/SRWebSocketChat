@@ -223,3 +223,90 @@
     return [self yy_modelInitWithCoder:aDecoder];
 }
 @end
+
+@implementation ChatModel
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{
+             @"userID" : @"userid",
+             @"userName" : @"userName",
+             @"headImgURL" : @"userHeadImg",
+             @"content" : @"content",
+             @"messageCount" : @"messageCount",
+             @"sendDate" : @"messageTime"
+             };
+}
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [self yy_modelEncodeWithCoder:aCoder];
+}
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    return [self yy_modelInitWithCoder:aDecoder];
+}
+- (id)copyWithZone:(NSZone *)zone {
+    return [self yy_modelCopy];
+}
+- (NSUInteger)hash {
+    return [self yy_modelHash];
+}
+- (BOOL)isEqual:(id)object {
+    return [self yy_modelIsEqual:object];
+}
+@end
+@implementation ChatListModel
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{
+             @"messageArray" : @"chatList",
+             @"messageCount" : @"cout"
+             };
+}
+
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"messageArray" : [ChatModel class]};
+}
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [self yy_modelEncodeWithCoder:aCoder];
+}
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    return [self yy_modelInitWithCoder:aDecoder];
+}
+- (id)copyWithZone:(NSZone *)zone {
+    return [self yy_modelCopy];
+}
+- (NSUInteger)hash {
+    return [self yy_modelHash];
+}
+- (BOOL)isEqual:(id)object {
+    return [self yy_modelIsEqual:object];
+}
+@end
+
+@implementation ChatDetailModel
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{
+             @"messageArray":@"chatList",
+             @"fromUserID" : @"fromuser",
+             @"fromUserName" : @"userName",
+             @"fromHeadImgURL" : @"fromuserHeadImg",
+             @"toUserID" : @"touser",
+             @"toUserName" : @"touserName",
+             @"toHeadImgURL" : @"touserHeadImg",
+             @"messageCount":@"msgcout"
+             };
+}
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"messageArray" : [ChatModel class]};
+}
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [self yy_modelEncodeWithCoder:aCoder];
+}
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    return [self yy_modelInitWithCoder:aDecoder];
+}- (id)copyWithZone:(NSZone *)zone {
+    return [self yy_modelCopy];
+}
+- (NSUInteger)hash {
+    return [self yy_modelHash];
+}
+- (BOOL)isEqual:(id)object {
+    return [self yy_modelIsEqual:object];
+}
+@end

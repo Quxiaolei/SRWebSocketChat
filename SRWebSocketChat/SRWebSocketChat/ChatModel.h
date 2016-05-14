@@ -184,3 +184,30 @@
 @property (nonatomic, strong) NSDate *updatedAt;
 @property (nonatomic, strong) NSValue *test;
 @end
+
+@interface ChatModel : NSObject <NSCoding>
+@property (nonatomic, assign) UInt64   userID;
+@property (nonatomic, strong) NSString *userName;
+@property (nonatomic, strong) NSString *headImgURL;
+@property (nonatomic, strong) NSString *content;
+@property (nonatomic, assign) UInt64   messageCount;
+@property (nonatomic, strong) NSDate   *sendDate;
+@end
+
+@interface ChatListModel : NSObject <NSCoding>
+@property (nonatomic, strong) NSArray *messageArray;        /// Array<ChatModel>
+@property (nonatomic, assign) UInt64   messageCount;
+@end
+
+@interface ChatDetailModel : NSObject <NSCoding>
+@property (nonatomic, strong) NSArray *messageArray;        /// Array<ChatModel>
+@property (nonatomic, assign) UInt64   fromUserID;
+@property (nonatomic, strong) NSString *fromUserName;
+@property (nonatomic, strong) NSString *fromHeadImgURL;
+@property (nonatomic, assign) UInt64   toUserID;
+@property (nonatomic, strong) NSString *toUserName;
+@property (nonatomic, strong) NSString *toHeadImgURL;
+//@property (nonatomic, strong) NSString *content;
+@property (nonatomic, assign) UInt64   messageCount;
+//@property (nonatomic, strong) NSDate   *sendDate;
+@end
