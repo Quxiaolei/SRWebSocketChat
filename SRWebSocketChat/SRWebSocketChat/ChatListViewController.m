@@ -7,7 +7,7 @@
 //
 
 #import "ChatListViewController.h"
-#import "ChatModel.h"
+#import "ChatDetailViewController.h"
 @interface ChatListViewController ()
 <
 UITableViewDelegate,
@@ -34,7 +34,7 @@ UITableViewDataSource>
     _dataArray = chatList.messageArray;
     
     YTKKeyValueStore *store = [[YTKKeyValueStore alloc] initDBWithName:@"test.db"];
-    NSString *tableName = @"user_table";
+    NSString *tableName = @"chatList_table";
     // 创建名为user_table的表，如果已存在，则忽略该操作
     [store createTableWithName:tableName];
     _store = store;
@@ -77,9 +77,9 @@ UITableViewDataSource>
 - (void)rightBarBtn
 {
     //置顶某条
-    [_store putObjectTopById:@"691" fromTable:@"user_table"];
+    [_store putObjectTopById:@"691" fromTable:@"chatList_table"];
     //查询所有对象并排序(YTKKeyValueItem)
-    NSArray *itemArray = [_store getAllItemsFromTableDESC:@"user_table"];
+    NSArray *itemArray = [_store getAllItemsFromTableDESC:@"chatList_table"];
     NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:0];
     for (YTKKeyValueItem *item in itemArray) {
         ChatModel *model = [ChatModel yy_modelWithJSON:item.itemObject];
@@ -107,16 +107,15 @@ UITableViewDataSource>
     }
     ChatModel *model = _dataArray[indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"%ld,%@,:%llu",indexPath.row,model.userName,model.userID];
+    cell.textLabel.textAlignment = UITextAlignmentLeft;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@,%@",model.content,model.sendDate];
-    // Configure the cell...
-    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//        ChatListViewController *vc = [[ChatListViewController alloc]init];
-//        [self.navigationController pushViewController:vc animated:YES];
+    ChatDetailViewController *vc = [[ChatDetailViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 @end

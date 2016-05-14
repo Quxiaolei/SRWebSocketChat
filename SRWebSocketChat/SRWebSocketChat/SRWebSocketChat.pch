@@ -12,10 +12,12 @@
 #import <SocketRocket/SocketRocket.h>
 #import <FMDB/FMDB.h>
 #import "DataBaseTool.h"
+
 #import <YTKKeyValueStore/YTKKeyValueStore.h>
 #import <YYModel/YYModel.h>
 #import <JSQMessagesViewController/JSQMessages.h>    // import all the things
 
+#import "ChatModel.h"
 
 #define kScreenBounds         [[UIScreen mainScreen] bounds]
 #define kScreenSize           [[UIScreen mainScreen] bounds].size                 //(e.g. 320,480)

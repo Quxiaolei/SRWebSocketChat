@@ -53,6 +53,7 @@
 }],
 	"msgcout" : 100,
     "fromuser":1,
+    "fromuserName": "李磊",
     "fromuserHeadImg": "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2790887355,2113825754&fm=116&gp=0.jpg",
     "touser":2,
     "touserHeadImg": "http://img1.imgtn.bdimg.com/it/u=2497998982,627593709&fm=23&gp=0.jpg",
