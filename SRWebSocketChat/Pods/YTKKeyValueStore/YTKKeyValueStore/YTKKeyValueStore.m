@@ -132,8 +132,12 @@ static NSString *const DELETE_ITEMS_WITH_PREFIX_SQL = @"DELETE from %@ where id 
 {
     //1.查
     YTKKeyValueItem *lastObject = [self getYTKKeyValueItemById:objectId fromTable:tableName];
-    //2.改
-    [self putObject:lastObject.itemObject withId:objectId intoTable:tableName];
+    if(lastObject){
+        //2.改
+        [self putObject:lastObject.itemObject withId:objectId intoTable:tableName];
+    }else{
+        debugLog(@"ERROR, faild to get last json data");
+    }
 }
 - (void)putObject:(id)object withId:(NSString *)objectId intoTable:(NSString *)tableName {
     if ([YTKKeyValueStore checkTableName:tableName] == NO) {
