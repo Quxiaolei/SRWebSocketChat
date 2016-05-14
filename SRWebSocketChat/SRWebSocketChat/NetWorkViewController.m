@@ -1,16 +1,17 @@
 //
-//  ViewController.m
+//  NetWorkViewController.m
 //  SRWebSocketChat
 //
-//  Created by Madis on 16/5/11.
+//  Created by Madis on 16/5/14.
 //
 //
 
-#import "ViewController.h"
+#import "NetWorkViewController.h"
 #import "MessageManager.h"
 #import "User.h"
+#import "ChatModel.h"
 
-@interface ViewController ()
+@interface NetWorkViewController ()
 <SRWebSocketDelegate
 >
 @property (nonatomic,strong) SRWebSocket *webSocket;
@@ -18,12 +19,13 @@
 @property (weak, nonatomic ) IBOutlet UITextView  *receiveMsgTextView;
 @end
 
-@implementation ViewController
+@implementation NetWorkViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    // Do any additional setup after loading the view from its nib.
 //    [self connectServer:@"" port:21];
+    self.navigationItem.title = @"WebSocket";
 }
 
 //- (void) connectServer: (NSString *) hostIP port:(int) hostPort{
@@ -50,25 +52,25 @@
      11的31343753536E37333503035F35343975F32031303C03662A633221D6135865352BD34352626423D6136637302DD6335466393716130E61333583939F2B77695623105F306C16237A6564312632D865303B1382D23433631322D638306D4332D439373706234E62353546436F3837
      */
     
-//    _webSocket.delegate = nil;
-//    [_webSocket close];
-//    //后台
-////    ws://172.168.1.49:9006/ws/bind?sid=a&did=daifw
-//    //Facebook服务
-////    ws://127.0.0.1:9000/chat
-//    http://127.0.0.1/
+    //    _webSocket.delegate = nil;
+    //    [_webSocket close];
+    //    //后台
+    ////    ws://172.168.1.49:9006/ws/bind?sid=a&did=daifw
+    //    //Facebook服务
+    ////    ws://127.0.0.1:9000/chat
+    //    http://127.0.0.1/
     _webSocket = [[SRWebSocket alloc]initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://127.0.0.1:9000/chat"]]];
-     _webSocket.delegate = self;
-     [_webSocket open];
+    _webSocket.delegate = self;
+    [_webSocket open];
     
-//    MessageManager *messageManager = [MessageManager sharedInstance];
-//    messageManager.socketHost = @"http://127.0.0.1:9000/chat";
-//    //手动下线
-//    //    messageManager.offlineStyle = SocketOfflineByUser;
-//    //    [messageManager socketCutOff];
-//    //
-//    //    messageManager.offlineStyle = SocketOfflineByServer;
-//    [messageManager socketConnect];
+    //    MessageManager *messageManager = [MessageManager sharedInstance];
+    //    messageManager.socketHost = @"http://127.0.0.1:9000/chat";
+    //    //手动下线
+    //    //    messageManager.offlineStyle = SocketOfflineByUser;
+    //    //    [messageManager socketCutOff];
+    //    //
+    //    //    messageManager.offlineStyle = SocketOfflineByServer;
+    //    [messageManager socketConnect];
 }
 #pragma mark - webSocket delegate
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket
@@ -96,40 +98,17 @@
 }
 
 #pragma mark - touch
-
-- (IBAction)dataBaseBtnClick:(id)sender {
-    NSLog(@"李磊---");
-    DataBaseTool *DBTool = [DataBaseTool shareInstance];
-    
-    [DBTool createDBTable:@"CREATE TABLE IF NOT EXISTS user (id integer PRIMARY KEY AUTOINCREMENT, userID text NOT NULL,userName text,sex boolean,other text);"];
-    [DBTool createDBTable:@"CREATE TABLE IF NOT EXISTS chatDetail (id integer PRIMARY KEY AUTOINCREMENT, userID text NOT NULL,userName text,sex boolean,other text);"];
-    [DBTool createDBTable:@"CREATE TABLE IF NOT EXISTS chatList (id integer PRIMARY KEY AUTOINCREMENT, userID text NOT NULL,userName text,sex boolean,other text);"];
-    
-    for (int i= 0; i< 5; i++) {
-        User *user = [[User alloc]init];
-        user.userID = [NSString stringWithFormat:@"%d",i];
-        user.userName = [NSString stringWithFormat:@"%d 张三",i];
-        user.sex = arc4random()%2;
-        user.other = [NSString stringWithFormat:@"%d 其他",i];;
-        
-        [DBTool insertDataWithTable:[NSString stringWithFormat:@"INSERT INTO user (userID,userName,other,sex) VALUES ('%@', '%@','%@','%ld')",user.userID,user.userName,user.other,(long)user.sex]];
-    }
-    
-    NSMutableArray *arry = [DBTool queryDataWithTable:@"SELECT * FROM user WHERE userID = 1" withDataObject:@"User"];
-    
-//    [NSString stringWithFormat:@"INSERT INTO user (userID,userName,other) VALUES ('%@', '%@','%@')",@"1",@"张三",@"其他"]
-}
 - (IBAction)connectClick:(id)sender {
     NSLog(@"李磊----准备连接");
     [self connectSocket];
 }
 - (IBAction)sendClick:(id)sender {
     
-//    [[MessageManager sharedInstance].socket send:@"发送消息test"];
-//    return ;
+    //    [[MessageManager sharedInstance].socket send:@"发送消息test"];
+    //    return ;
     NSLog(@"李磊----准备发送消息");
     if (_webSocket == nil || _webSocket.readyState >= 2) {
-//        UIAlertAction *alert = [UIAlertAction alloc]init;
+        //        UIAlertAction *alert = [UIAlertAction alloc]init;
         [[[UIAlertView alloc]initWithTitle:@"提示" message:@"请先连接" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil] show];
         return ;
     }
@@ -140,18 +119,18 @@
     }
     [_webSocket send:sendString];
     [[[UIAlertView alloc]initWithTitle:@"发送成功" message:sendString delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil] show];
-
     
-//    AFHTTPRequestOperationManager * op = [AFHTTPRequestOperationManager manager];
-//    
-//    /**
-//     *  发给1的
-//     */
-//    [op GET:@"http://192.168.1.91:9006/ws/pushmsg?uid=11&sid=31343753536E37343563133F38313935F39064363C66537A613321D6362837372BD34312336123D6134666382DD3962433383766337E39343556337F2B77695623105F633C53765A6263313332D831623B2382D23465331342D662613D9322D439373713862E61643553433F3538&content=message1" parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-//        NSLog(@"sent");
-//    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
-//        
-//    }];
+    
+    //    AFHTTPRequestOperationManager * op = [AFHTTPRequestOperationManager manager];
+    //
+    //    /**
+    //     *  发给1的
+    //     */
+    //    [op GET:@"http://192.168.1.91:9006/ws/pushmsg?uid=11&sid=31343753536E37343563133F38313935F39064363C66537A613321D6362837372BD34312336123D6134666382DD3962433383766337E39343556337F2B77695623105F633C53765A6263313332D831623B2382D23465331342D662613D9322D439373713862E61643553433F3538&content=message1" parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+    //        NSLog(@"sent");
+    //    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+    //
+    //    }];
     
     /*NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
      [dictionary setValue:@"15" forKey:@"uid"];

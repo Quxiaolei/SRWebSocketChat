@@ -52,6 +52,8 @@ static NSString *const UPDATE_ITEM_SQL = @"REPLACE INTO %@ (id, json, createdTim
 
 static NSString *const QUERY_ITEM_SQL = @"SELECT json, createdTime from %@ where id = ? Limit 1";
 
+static NSString *const SELECT_ALL_SQL_DESC = @"SELECT * from %@ ORDER BY createdTime DESC";
+
 static NSString *const SELECT_ALL_SQL = @"SELECT * from %@";
 
 static NSString *const CLEAR_ALL_SQL = @"DELETE from %@";
@@ -126,7 +128,13 @@ static NSString *const DELETE_ITEMS_WITH_PREFIX_SQL = @"DELETE from %@ where id 
         debugLog(@"ERROR, failed to clear table: %@", tableName);
     }
 }
-
+- (void)putObjectTopById:(NSString *)objectId fromTable:(NSString *)tableName
+{
+    //1.查
+    YTKKeyValueItem *lastObject = [self getYTKKeyValueItemById:objectId fromTable:tableName];
+    //2.改
+    [self putObject:lastObject.itemObject withId:objectId intoTable:tableName];
+}
 - (void)putObject:(id)object withId:(NSString *)objectId intoTable:(NSString *)tableName {
     if ([YTKKeyValueStore checkTableName:tableName] == NO) {
         return;
@@ -221,6 +229,38 @@ static NSString *const DELETE_ITEMS_WITH_PREFIX_SQL = @"DELETE from %@ where id 
         return array[0];
     }
     return nil;
+}
+- (NSArray *)getAllItemsFromTableDESC:(NSString *)tableName
+{
+    if ([YTKKeyValueStore checkTableName:tableName] == NO) {
+        return nil;
+    }
+    NSString * sql = [NSString stringWithFormat:SELECT_ALL_SQL_DESC, tableName];
+    __block NSMutableArray * result = [NSMutableArray array];
+    [_dbQueue inDatabase:^(FMDatabase *db) {
+        FMResultSet * rs = [db executeQuery:sql];
+        while ([rs next]) {
+            YTKKeyValueItem * item = [[YTKKeyValueItem alloc] init];
+            item.itemId = [rs stringForColumn:@"id"];
+            item.itemObject = [rs stringForColumn:@"json"];
+            item.createdTime = [rs dateForColumn:@"createdTime"];
+            [result addObject:item];
+        }
+        [rs close];
+    }];
+    // parse json string to object
+    NSError * error;
+    for (YTKKeyValueItem * item in result) {
+        error = nil;
+        id object = [NSJSONSerialization JSONObjectWithData:[item.itemObject dataUsingEncoding:NSUTF8StringEncoding]
+                                                    options:(NSJSONReadingAllowFragments) error:&error];
+        if (error) {
+            debugLog(@"ERROR, faild to prase to json.");
+        } else {
+            item.itemObject = object;
+        }
+    }
+    return result;
 }
 
 - (NSArray *)getAllItemsFromTable:(NSString *)tableName {

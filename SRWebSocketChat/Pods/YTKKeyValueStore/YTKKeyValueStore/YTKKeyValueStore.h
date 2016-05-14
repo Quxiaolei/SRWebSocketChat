@@ -31,6 +31,9 @@
 
 ///************************ Put&Get methods *****************************************
 
+//置顶操作
+- (void)putObjectTopById:(NSString *)objectId fromTable:(NSString *)tableName;
+
 - (void)putObject:(id)object withId:(NSString *)objectId intoTable:(NSString *)tableName;
 
 - (id)getObjectById:(NSString *)objectId fromTable:(NSString *)tableName;
@@ -45,6 +48,8 @@
 
 - (NSNumber *)getNumberById:(NSString *)numberId fromTable:(NSString *)tableName;
 
+//获取所有数据,降序排列
+- (NSArray *)getAllItemsFromTableDESC:(NSString *)tableName;
 - (NSArray *)getAllItemsFromTable:(NSString *)tableName;
 
 - (void)deleteObjectById:(NSString *)objectId fromTable:(NSString *)tableName;

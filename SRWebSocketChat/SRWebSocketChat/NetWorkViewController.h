@@ -1,15 +1,14 @@
 //
-//  ViewController.h
+//  NetWorkViewController.h
 //  SRWebSocketChat
 //
-//  Created by Madis on 16/5/11.
+//  Created by Madis on 16/5/14.
 //
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface NetWorkViewController : UIViewController
 
 @end
 

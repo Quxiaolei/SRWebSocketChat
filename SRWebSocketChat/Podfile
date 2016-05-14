@@ -6,4 +6,5 @@ target 'SRWebSocketChat' do
   pod 'SocketRocket', '~> 0.5'
   pod 'YTKKeyValueStore'
   pod 'YYModel'
+  pod 'JSQMessagesViewController'
 end

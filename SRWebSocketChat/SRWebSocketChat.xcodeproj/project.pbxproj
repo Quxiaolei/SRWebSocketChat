@@ -11,11 +11,18 @@
 		256895621CE5B70F00C6F202 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 256895611CE5B70F00C6F202 /* User.m */; };
 		259A221B1CE30BA300288C7A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 259A221A1CE30BA300288C7A /* main.m */; };
 		259A221E1CE30BA300288C7A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 259A221D1CE30BA300288C7A /* AppDelegate.m */; };
-		259A22211CE30BA300288C7A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 259A22201CE30BA300288C7A /* ViewController.m */; };
 		259A22241CE30BA300288C7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 259A22221CE30BA300288C7A /* Main.storyboard */; };
 		259A22261CE30BA300288C7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 259A22251CE30BA300288C7A /* Assets.xcassets */; };
-		259A22291CE30BA300288C7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 259A22271CE30BA300288C7A /* LaunchScreen.storyboard */; };
 		259A22331CE3102600288C7A /* MessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 259A22321CE3102600288C7A /* MessageManager.m */; };
+		25F651051CE71EF000A13387 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = 25F651031CE71EF000A13387 /* user.json */; };
+		25F651061CE71EF000A13387 /* weibo.json in Resources */ = {isa = PBXBuildFile; fileRef = 25F651041CE71EF000A13387 /* weibo.json */; };
+		25F6510A1CE71F6500A13387 /* ChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F651091CE71F6500A13387 /* ChatModel.m */; };
+		25F651101CE7343F00A13387 /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F6510F1CE7343F00A13387 /* HomeTableViewController.m */; };
+		25F651131CE736F000A13387 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25F651111CE736F000A13387 /* LaunchScreen.storyboard */; };
+		25F6511A1CE738EA00A13387 /* NetWorkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F651181CE738EA00A13387 /* NetWorkViewController.m */; };
+		25F6511B1CE738EA00A13387 /* NetWorkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25F651191CE738EA00A13387 /* NetWorkViewController.xib */; };
+		25F6511E1CE73AD200A13387 /* DBTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F6511D1CE73AD200A13387 /* DBTestViewController.m */; };
+		25F651221CE73CEF00A13387 /* ChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F651201CE73CEF00A13387 /* ChatListViewController.m */; };
 		323CB109C1D9858DEECDDF5F /* Pods_SRWebSocketChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225822B24FD7E7B403398418 /* Pods_SRWebSocketChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,15 +36,26 @@
 		259A221A1CE30BA300288C7A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		259A221C1CE30BA300288C7A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		259A221D1CE30BA300288C7A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		259A221F1CE30BA300288C7A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		259A22201CE30BA300288C7A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		259A22231CE30BA300288C7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		259A22251CE30BA300288C7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		259A22281CE30BA300288C7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		259A222A1CE30BA300288C7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		259A22301CE30D3700288C7A /* SRWebSocketChat.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocketChat.pch; sourceTree = "<group>"; };
 		259A22311CE3102600288C7A /* MessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageManager.h; sourceTree = "<group>"; };
 		259A22321CE3102600288C7A /* MessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageManager.m; sourceTree = "<group>"; };
+		25F651031CE71EF000A13387 /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
+		25F651041CE71EF000A13387 /* weibo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = weibo.json; sourceTree = "<group>"; };
+		25F651081CE71F6500A13387 /* ChatModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatModel.h; sourceTree = "<group>"; };
+		25F651091CE71F6500A13387 /* ChatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatModel.m; sourceTree = "<group>"; };
+		25F6510E1CE7343F00A13387 /* HomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewController.h; sourceTree = "<group>"; };
+		25F6510F1CE7343F00A13387 /* HomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewController.m; sourceTree = "<group>"; };
+		25F651121CE736F000A13387 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		25F651171CE738EA00A13387 /* NetWorkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkViewController.h; sourceTree = "<group>"; };
+		25F651181CE738EA00A13387 /* NetWorkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkViewController.m; sourceTree = "<group>"; };
+		25F651191CE738EA00A13387 /* NetWorkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NetWorkViewController.xib; sourceTree = "<group>"; };
+		25F6511C1CE73AD200A13387 /* DBTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTestViewController.h; sourceTree = "<group>"; };
+		25F6511D1CE73AD200A13387 /* DBTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTestViewController.m; sourceTree = "<group>"; };
+		25F6511F1CE73CEF00A13387 /* ChatListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatListViewController.h; sourceTree = "<group>"; };
+		25F651201CE73CEF00A13387 /* ChatListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatListViewController.m; sourceTree = "<group>"; };
 		6F68E037DEBB12F5BC5EB662 /* Pods-SRWebSocketChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SRWebSocketChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-SRWebSocketChat/Pods-SRWebSocketChat.release.xcconfig"; sourceTree = "<group>"; };
 		FDCA1B72E8994100AB701C25 /* Pods-SRWebSocketChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SRWebSocketChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SRWebSocketChat/Pods-SRWebSocketChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,6 +79,8 @@
 				2568955C1CE57F5600C6F202 /* DataBaseTool.m */,
 				256895601CE5B70F00C6F202 /* User.h */,
 				256895611CE5B70F00C6F202 /* User.m */,
+				25F651081CE71F6500A13387 /* ChatModel.h */,
+				25F651091CE71F6500A13387 /* ChatModel.m */,
 			);
 			name = DataBase;
 			sourceTree = "<group>";
@@ -97,13 +117,21 @@
 			children = (
 				259A221C1CE30BA300288C7A /* AppDelegate.h */,
 				259A221D1CE30BA300288C7A /* AppDelegate.m */,
-				259A221F1CE30BA300288C7A /* ViewController.h */,
-				259A22201CE30BA300288C7A /* ViewController.m */,
+				25F6510E1CE7343F00A13387 /* HomeTableViewController.h */,
+				25F6510F1CE7343F00A13387 /* HomeTableViewController.m */,
+				25F651171CE738EA00A13387 /* NetWorkViewController.h */,
+				25F651181CE738EA00A13387 /* NetWorkViewController.m */,
+				25F651191CE738EA00A13387 /* NetWorkViewController.xib */,
+				25F6511C1CE73AD200A13387 /* DBTestViewController.h */,
+				25F6511D1CE73AD200A13387 /* DBTestViewController.m */,
+				25F6511F1CE73CEF00A13387 /* ChatListViewController.h */,
+				25F651201CE73CEF00A13387 /* ChatListViewController.m */,
 				2568955F1CE57FB100C6F202 /* Network */,
+				25F651071CE71EF700A13387 /* Source */,
 				2568955E1CE57F9000C6F202 /* DataBase */,
 				259A22221CE30BA300288C7A /* Main.storyboard */,
+				25F651111CE736F000A13387 /* LaunchScreen.storyboard */,
 				259A22251CE30BA300288C7A /* Assets.xcassets */,
-				259A22271CE30BA300288C7A /* LaunchScreen.storyboard */,
 				259A222A1CE30BA300288C7A /* Info.plist */,
 				259A22191CE30BA300288C7A /* Supporting Files */,
 			);
@@ -117,6 +145,15 @@
 				259A22301CE30D3700288C7A /* SRWebSocketChat.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		25F651071CE71EF700A13387 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				25F651031CE71EF000A13387 /* user.json */,
+				25F651041CE71EF000A13387 /* weibo.json */,
+			);
+			name = Source;
 			sourceTree = "<group>";
 		};
 		37A373981AB9345A18B903F5 /* Frameworks */ = {
@@ -196,8 +233,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				259A22291CE30BA300288C7A /* LaunchScreen.storyboard in Resources */,
+				25F651051CE71EF000A13387 /* user.json in Resources */,
+				25F6511B1CE738EA00A13387 /* NetWorkViewController.xib in Resources */,
 				259A22261CE30BA300288C7A /* Assets.xcassets in Resources */,
+				25F651061CE71EF000A13387 /* weibo.json in Resources */,
+				25F651131CE736F000A13387 /* LaunchScreen.storyboard in Resources */,
 				259A22241CE30BA300288C7A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,11 +297,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25F6511E1CE73AD200A13387 /* DBTestViewController.m in Sources */,
 				2568955D1CE57F5600C6F202 /* DataBaseTool.m in Sources */,
-				259A22211CE30BA300288C7A /* ViewController.m in Sources */,
 				256895621CE5B70F00C6F202 /* User.m in Sources */,
+				25F6511A1CE738EA00A13387 /* NetWorkViewController.m in Sources */,
+				25F651221CE73CEF00A13387 /* ChatListViewController.m in Sources */,
 				259A221E1CE30BA300288C7A /* AppDelegate.m in Sources */,
+				25F651101CE7343F00A13387 /* HomeTableViewController.m in Sources */,
 				259A221B1CE30BA300288C7A /* main.m in Sources */,
+				25F6510A1CE71F6500A13387 /* ChatModel.m in Sources */,
 				259A22331CE3102600288C7A /* MessageManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,10 +321,10 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		259A22271CE30BA300288C7A /* LaunchScreen.storyboard */ = {
+		25F651111CE736F000A13387 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				259A22281CE30BA300288C7A /* Base */,
+				25F651121CE736F000A13387 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

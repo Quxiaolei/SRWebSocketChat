@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0468AF482B6DD7658F6518A26B4E42D9"
+               BlueprintIdentifier = "FAB77FDD7F7CE64592DE6443F0B67A3D"
                BuildableName = "Pods_SRWebSocketChat.framework"
                BlueprintName = "Pods-SRWebSocketChat"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0468AF482B6DD7658F6518A26B4E42D9"
+            BlueprintIdentifier = "FAB77FDD7F7CE64592DE6443F0B67A3D"
             BuildableName = "Pods_SRWebSocketChat.framework"
             BlueprintName = "Pods-SRWebSocketChat"
             ReferencedContainer = "container:Pods.xcodeproj">
