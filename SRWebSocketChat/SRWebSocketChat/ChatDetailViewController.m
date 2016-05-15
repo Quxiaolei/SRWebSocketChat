@@ -8,6 +8,9 @@
 
 #import "ChatDetailViewController.h"
 @interface ChatDetailViewController ()
+<JSQMessagesComposerTextViewPasteDelegate,
+UIActionSheetDelegate
+>
 @property (nonatomic, strong) NSMutableArray *messageArray;
 @property (strong, nonatomic) JSQMessagesBubbleImage *outgoingBubbleImageData;
 @property (strong, nonatomic) JSQMessagesBubbleImage *incomingBubbleImageData;
@@ -50,8 +53,10 @@
 - (void)initView
 {
     self.navigationItem.title = [NSString stringWithFormat:@"与%@聊天中...",self.senderDisplayName];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(rightBarBtn)];
-
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(rightBarBtn)];
+    self.navigationItem.rightBarButtonItems = @[
+                                                [[UIBarButtonItem alloc]initWithTitle:@"发消息" style:UIBarButtonItemStylePlain target:self action:@selector(rightBarBtn)],
+                                                [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refRightBarBtn)]];
     //绘制气泡
     JSQMessagesBubbleImageFactory *bubbleFactory = [[JSQMessagesBubbleImageFactory alloc] init];
     self.outgoingBubbleImageData = [bubbleFactory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
@@ -60,15 +65,61 @@
     self.showLoadEarlierMessagesHeader = YES;
     //输入框
     self.inputToolbar.contentView.textView.pasteDelegate = self;
-    //单元格自定义操作
+    //隐藏左侧多媒体输入按钮
+    self.inputToolbar.contentView.leftBarButtonItemWidth = CGFLOAT_MIN;
+    self.inputToolbar.contentView.leftContentPadding = CGFLOAT_MIN;
+    //单元格自定义点击操作
     [JSQMessagesCollectionViewCell registerMenuAction:@selector(customAction:)];
-    [UIMenuController sharedMenuController].menuItems = @[ [[UIMenuItem alloc] initWithTitle:@"Custom Action"
+    [UIMenuController sharedMenuController].menuItems = @[ [[UIMenuItem alloc] initWithTitle:@"自定义操作"
                                                                                       action:@selector(customAction:)] ];
     [JSQMessagesCollectionViewCell registerMenuAction:@selector(delete:)];
+    //collectionCell布局
+    //    messageBubbleLeftRightMargin
+    //    messageBubbleFont
+//    self.collectionView.collectionViewLayout.messageBubbleFont = [UIFont systemFontOfSize:100];
+    //根据显示情况?--改变topLabel的高度
 
+}
+//???: 卵用
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+    [self.view resignFirstResponder];
+    [self.inputToolbar.contentView.textView endEditing:YES];
+}
+- (void)refRightBarBtn
+{
+    //切换数据
+    NSLog(@"李磊----发送数据");
+    
+    NSString *path1 = [[NSBundle mainBundle] pathForResource:@"chatDetail" ofType:@"json"];
+    NSData *data1 = [NSData dataWithContentsOfFile:path1];
+    NSDictionary *json1 = [NSJSONSerialization JSONObjectWithData:data1 options:0 error:nil];
+    
+    YTKKeyValueStore *store = [[YTKKeyValueStore alloc] initDBWithName:@"test.db"];
+    NSString *tableName = @"chatDetail_table";
+    // 创建名为user_table的表，如果已存在，则忽略该操作
+    [store createTableWithName:tableName];
+
+    
+    
+    
+    //    //置顶某条
+    //    [_store putObjectTopById:@"691" fromTable:@"chatList_table"];
+    //    //查询所有对象并排序(YTKKeyValueItem)
+    //    NSArray *itemArray = [_store getAllItemsFromTableDESC:@"chatList_table"];
+    //    NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:0];
+    //    for (YTKKeyValueItem *item in itemArray) {
+    //        ChatModel *model = [ChatModel yy_modelWithJSON:item.itemObject];
+    //        [mutableArray addObject:model];
+    //    }
+    //    _dataArray = [mutableArray copy];
+    //    //    [_store close];
+    //    [_tableView reloadData];
 }
 - (void)rightBarBtn
 {
+    //收消息测试
     self.showTypingIndicator = !self.showTypingIndicator;
     [self scrollToBottomAnimated:YES];
     JSQMessage *copyMessage = [[_messageArray lastObject] copy];
@@ -77,20 +128,10 @@
                                           displayName:@"我是填充的"
                                                  text:@"First received!"];
     }
-    
-    
-//    //置顶某条
-//    [_store putObjectTopById:@"691" fromTable:@"chatList_table"];
-//    //查询所有对象并排序(YTKKeyValueItem)
-//    NSArray *itemArray = [_store getAllItemsFromTableDESC:@"chatList_table"];
-//    NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:0];
-//    for (YTKKeyValueItem *item in itemArray) {
-//        ChatModel *model = [ChatModel yy_modelWithJSON:item.itemObject];
-//        [mutableArray addObject:model];
-//    }
-//    _dataArray = [mutableArray copy];
-//    //    [_store close];
-//    [_tableView reloadData];
+    [_messageArray addObject:copyMessage];
+    [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
+    [self finishReceivingMessageAnimated:YES];
+    [self.collectionView reloadData];
 }
 
 
@@ -108,7 +149,7 @@
     [self finishSendingMessageAnimated:YES];
 }
 
-//左侧别针点下
+//左侧多媒体出入按钮
 - (void)didPressAccessoryButton:(UIButton *)sender
 {
     [self.inputToolbar.contentView.textView resignFirstResponder];
@@ -175,7 +216,7 @@
     }
     return self.incomingBubbleImageData;
 }
-//!!!: 顶部label//???:
+//顶部显示时间label
 - (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView attributedTextForCellTopLabelAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.item % 3 == 0) {
@@ -184,7 +225,7 @@
     }
     return nil;
 }
-//顶部label//???:
+//顶部显示发送者名称label
 - (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView attributedTextForMessageBubbleTopLabelAtIndexPath:(NSIndexPath *)indexPath
 {
     JSQMessage *message = [self.messageArray objectAtIndex:indexPath.item];
@@ -199,6 +240,7 @@
     }
     return [[NSAttributedString alloc] initWithString:message.senderDisplayName];
 }
+//底部label
 - (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView attributedTextForCellBottomLabelAtIndexPath:(NSIndexPath *)indexPath
 {
     return nil;
@@ -227,6 +269,7 @@
 }
 
 #pragma mark - Custom menu items
+//是否允许单元格自定义点击
 - (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
 {
     if (action == @selector(customAction:)) {
@@ -242,10 +285,11 @@
     }
     [super collectionView:collectionView performAction:action forItemAtIndexPath:indexPath withSender:sender];
 }
+//单元格自定义点击事件
 - (void)customAction:(id)sender
 {
     NSLog(@"Custom action received! Sender: %@", sender);
-    [[[UIAlertView alloc] initWithTitle:@"Custom Action"
+    [[[UIAlertView alloc] initWithTitle:@"单元格的自定义操作"
                                 message:nil
                                delegate:nil
                       cancelButtonTitle:@"OK"
@@ -264,7 +308,7 @@
     }
     return 0.0f;
 }
-//???:
+//设置消息气泡上label的高度
 - (CGFloat)collectionView:(JSQMessagesCollectionView *)collectionView
                    layout:(JSQMessagesCollectionViewFlowLayout *)collectionViewLayout heightForMessageBubbleTopLabelAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -280,6 +324,7 @@
     }
     return kJSQMessagesCollectionViewCellLabelHeightDefault;
 }
+//单元格底部label高度
 - (CGFloat)collectionView:(JSQMessagesCollectionView *)collectionView
                    layout:(JSQMessagesCollectionViewFlowLayout *)collectionViewLayout heightForCellBottomLabelAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -288,7 +333,7 @@
 
 #pragma mark - Responding to collection view tap events
 
-//加载之前消息
+//点击加载之前消息
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView
                 header:(JSQMessagesLoadEarlierHeaderView *)headerView didTapLoadEarlierMessagesButton:(UIButton *)sender
 {
