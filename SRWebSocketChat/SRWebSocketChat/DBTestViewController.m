@@ -95,8 +95,8 @@
     //删除对象
     //    [store deleteObjectById:5 fromTable:tableName];
     
-    //查询所有对象并排序(YTKKeyValueItem)
-    NSArray *array = [store getAllItemsFromTableDESC:tableName];
+    //查询所有对象并排序(YTKKeyValueItem.itemObject)
+    NSArray *array = [store getAllObjectsFromTableDESC:tableName];
     //查询某个对象的数据(YTKKeyValueItem.itemObject)
     NSDictionary *queryUser = [store getObjectById:key fromTable:tableName];
     

@@ -34,6 +34,9 @@
 //置顶操作
 - (void)putObjectTopById:(NSString *)objectId fromTable:(NSString *)tableName;
 
+//写入数据库,手动写入创建时间,用于消息处理保证消息有序
+- (void)putObject:(id)object withId:(NSString *)objectId andCreateTime:(NSDate *)createdTime intoTable:(NSString *)tableName;
+
 - (void)putObject:(id)object withId:(NSString *)objectId intoTable:(NSString *)tableName;
 
 - (id)getObjectById:(NSString *)objectId fromTable:(NSString *)tableName;
@@ -49,7 +52,11 @@
 - (NSNumber *)getNumberById:(NSString *)numberId fromTable:(NSString *)tableName;
 
 //获取所有数据,降序排列
-- (NSArray *)getAllItemsFromTableDESC:(NSString *)tableName;
+- (NSArray <YTKKeyValueItem *>*)getAllItemsFromTableDESC:(NSString *)tableName;
+- (NSArray <NSDictionary *>*)getAllObjectsFromTableDESC:(NSString *)tableName;
+//获取所有数据,升序排列
+- (NSArray <YTKKeyValueItem *>*)getAllItemsFromTableASC:(NSString *)tableName;
+- (NSArray <NSDictionary *>*)getAllObjectsFromTableASC:(NSString *)tableName;
 - (NSArray *)getAllItemsFromTable:(NSString *)tableName;
 
 - (void)deleteObjectById:(NSString *)objectId fromTable:(NSString *)tableName;

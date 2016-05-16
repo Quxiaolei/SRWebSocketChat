@@ -100,22 +100,31 @@ UIActionSheetDelegate
     NSString *tableName = @"chatDetail_table";
     // 创建名为user_table的表，如果已存在，则忽略该操作
     [store createTableWithName:tableName];
-
     
+    //!!!: 祈祷返回json数据是时间排好序的
+    NSArray *array = json1[@"chatList"];
+    for (NSDictionary *modelDict in array) {
+        NSString *userID = modelDict[@"userid"];
+        [store putObject:modelDict withId:userID intoTable:tableName];
+    }
     
-    
-    //    //置顶某条
-    //    [_store putObjectTopById:@"691" fromTable:@"chatList_table"];
-    //    //查询所有对象并排序(YTKKeyValueItem)
-    //    NSArray *itemArray = [_store getAllItemsFromTableDESC:@"chatList_table"];
-    //    NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:0];
-    //    for (YTKKeyValueItem *item in itemArray) {
-    //        ChatModel *model = [ChatModel yy_modelWithJSON:item.itemObject];
-    //        [mutableArray addObject:model];
-    //    }
-    //    _dataArray = [mutableArray copy];
-    //    //    [_store close];
-    //    [_tableView reloadData];
+    //查询所有对象并排序(YTKKeyValueItem)
+    NSArray *itemArray = [store getAllObjectsFromTableASC:@"chatDetail_table"];
+    NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:0];
+    for (NSDictionary *objectDict in itemArray) {
+        ChatModel *model = [ChatModel yy_modelWithJSON:objectDict];
+        JSQMessage *message = [[JSQMessage alloc]initWithSenderId:[NSString stringWithFormat:@"%llu",model.userID] senderDisplayName:model.userName date:model.sendDate text:model.content];
+        [mutableArray addObject:message];
+    }
+//    for (YTKKeyValueItem *item in itemArray) {
+//        ChatModel *model = [ChatModel yy_modelWithJSON:item.itemObject];
+//        JSQMessage *message = [[JSQMessage alloc]initWithSenderId:[NSString stringWithFormat:@"%llu",model.userID] senderDisplayName:model.userName date:model.sendDate text:model.content];
+//        [mutableArray addObject:message];
+//    }
+    _messageArray = mutableArray;
+    [self finishReceivingMessageAnimated:YES];
+    NSLog(@"李磊----数据切换成功");
+    [self.collectionView reloadData];
 }
 - (void)rightBarBtn
 {
@@ -219,10 +228,10 @@ UIActionSheetDelegate
 //顶部显示时间label
 - (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView attributedTextForCellTopLabelAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.item % 3 == 0) {
+//    if (indexPath.item % 3 == 0) {
         JSQMessage *message = [self.messageArray objectAtIndex:indexPath.item];
         return [[JSQMessagesTimestampFormatter sharedFormatter] attributedTimestampForDate:message.date];
-    }
+//    }
     return nil;
 }
 //顶部显示发送者名称label
@@ -302,11 +311,21 @@ UIActionSheetDelegate
 - (CGFloat)collectionView:(JSQMessagesCollectionView *)collectionView
                    layout:(JSQMessagesCollectionViewFlowLayout *)collectionViewLayout heightForCellTopLabelAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.item % 3 == 0) {
+    JSQMessage *message = [self.messageArray objectAtIndex:indexPath.item];
+    
+    //默认显示第一个发送时间
+    if (indexPath.item - 1>= 0) {
+        JSQMessage *reMessage = [self.messageArray objectAtIndex:indexPath.item-1];
+        NSLog(@"李磊--%@--%@--%d",message.date,reMessage.date,[message.date isEqualToDate:reMessage.date]);
+        if([message.date isEqualToDate:reMessage.date]){
+            return CGFLOAT_MIN;
+        }
+    }
+//    if (indexPath.item % 3 == 0) {
         //!!!: 和上边的topLabel对应
         return kJSQMessagesCollectionViewCellLabelHeightDefault;
-    }
-    return 0.0f;
+//    }
+//    return 0.0f;
 }
 //设置消息气泡上label的高度
 - (CGFloat)collectionView:(JSQMessagesCollectionView *)collectionView

@@ -27,6 +27,8 @@ UITableViewDataSource>
 }
 - (void)initData
 {
+    
+    [self getTimeWithTimestamp:@"1463384109"];
     NSString *path1 = [[NSBundle mainBundle] pathForResource:@"chatList" ofType:@"json"];
     NSData *data1 = [NSData dataWithContentsOfFile:path1];
     NSDictionary *json1 = [NSJSONSerialization JSONObjectWithData:data1 options:0 error:nil];
@@ -51,6 +53,8 @@ UITableViewDataSource>
         //保存对象
         ChatModel *model = chatList.messageArray[i];
         NSDictionary *json = [model yy_modelToJSONObject];
+//        NSDate *date =
+        NSString *str = json[@"messageTime"];
         [store putObject:json withId:[NSString stringWithFormat:@"%llu",model.userID] intoTable:tableName];
     }
     
@@ -78,10 +82,19 @@ UITableViewDataSource>
 {
     //置顶某条
     [_store putObjectTopById:@"691" fromTable:@"chatList_table"];
+    NSDictionary *dict = [_store getObjectById:@"1" fromTable:@"chatList_table"];
+    [_store putObject:dict withId:@"111111111" andCreateTime:[NSDate date] intoTable:@"chatList_table"];
+    //查询所有对象并排序(YTKKeyValueItem.itemObject)
+//    NSArray *itemObjectArray = [_store getAllItemsFromTableASC:@"chatList_table"];
+//    NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:0];
+//    for (NSDictionary *itemObject in itemObjectArray) {
+//        ChatModel *model = [ChatModel yy_modelWithJSON:itemObject];
+//        [mutableArray addObject:model];
+//    }
     //查询所有对象并排序(YTKKeyValueItem)
-    NSArray *itemArray = [_store getAllItemsFromTableDESC:@"chatList_table"];
+    NSArray *itemObjectArray = [_store getAllItemsFromTableASC:@"chatList_table"];
     NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:0];
-    for (YTKKeyValueItem *item in itemArray) {
+    for (YTKKeyValueItem *item in itemObjectArray) {
         ChatModel *model = [ChatModel yy_modelWithJSON:item.itemObject];
         [mutableArray addObject:model];
     }
@@ -117,5 +130,35 @@ UITableViewDataSource>
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     ChatDetailViewController *vc = [[ChatDetailViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
+}
+- (void)changeDate:(NSString *)dateStr
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    formatter.timeZone = [NSTimeZone timeZoneWithName:@"shanghai"];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateFormat:@"YY/MM/dd,HH:mm"];
+//    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSinceNow:<#(NSTimeInterval)#>];
+}
+//获得时间戳
+- (NSString * )getTimeWithTimestamp:(NSString *)timestamp
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    formatter.timeZone = [NSTimeZone timeZoneWithName:@"shanghai"];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateFormat:@"YY/MM/dd,HH:mm"];
+    //    时间戳转时间的方法
+    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:[timestamp doubleValue]];
+    NSString *confromTimespStr = [formatter stringFromDate:confromTimesp];
+    //获取当前时间
+    NSDate *dateNow = [NSDate date];
+    NSTimeZone *zone = [NSTimeZone systemTimeZone];
+    NSInteger interval = [zone secondsFromGMTForDate:dateNow];
+    //转换为本地时间,加上时区
+    NSDate *localeDate = [dateNow  dateByAddingTimeInterval:interval];
+    //转换时间戳
+    NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[localeDate timeIntervalSince1970]];
+    return confromTimespStr;
 }
 @end

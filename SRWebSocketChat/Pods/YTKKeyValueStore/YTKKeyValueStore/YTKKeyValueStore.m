@@ -54,6 +54,12 @@ static NSString *const QUERY_ITEM_SQL = @"SELECT json, createdTime from %@ where
 
 static NSString *const SELECT_ALL_SQL_DESC = @"SELECT * from %@ ORDER BY createdTime DESC";
 
+static NSString *const SELECT_OBJECT_SQL_DESC = @"SELECT json from %@ ORDER BY createdTime DESC";
+
+static NSString *const SELECT_ALL_SQL_ASC = @"SELECT * from %@ ORDER BY createdTime ASC";
+
+static NSString *const SELECT_OBJECT_SQL_ASC = @"SELECT json from %@ ORDER BY createdTime ASC";
+
 static NSString *const SELECT_ALL_SQL = @"SELECT * from %@";
 
 static NSString *const CLEAR_ALL_SQL = @"DELETE from %@";
@@ -139,6 +145,28 @@ static NSString *const DELETE_ITEMS_WITH_PREFIX_SQL = @"DELETE from %@ where id 
         debugLog(@"ERROR, faild to get last json data");
     }
 }
+- (void)putObject:(id)object withId:(NSString *)objectId andCreateTime:(NSDate *)createdTime intoTable:(NSString *)tableName
+{
+    if ([YTKKeyValueStore checkTableName:tableName] == NO) {
+        return;
+    }
+    NSError * error;
+    NSData * data = [NSJSONSerialization dataWithJSONObject:object options:0 error:&error];
+    if (error) {
+        debugLog(@"ERROR, faild to get json data");
+        return;
+    }
+    NSString * jsonString = [[NSString alloc] initWithData:data encoding:(NSUTF8StringEncoding)];
+    NSString * sql = [NSString stringWithFormat:UPDATE_ITEM_SQL, tableName];
+    __block BOOL result;
+    [_dbQueue inDatabase:^(FMDatabase *db) {
+        result = [db executeUpdate:sql, objectId, jsonString, createdTime];
+    }];
+    if (!result) {
+        debugLog(@"ERROR, failed to insert/replace into table: %@", tableName);
+    }
+}
+
 - (void)putObject:(id)object withId:(NSString *)objectId intoTable:(NSString *)tableName {
     if ([YTKKeyValueStore checkTableName:tableName] == NO) {
         return;
@@ -234,8 +262,7 @@ static NSString *const DELETE_ITEMS_WITH_PREFIX_SQL = @"DELETE from %@ where id 
     }
     return nil;
 }
-- (NSArray *)getAllItemsFromTableDESC:(NSString *)tableName
-{
+- (NSArray <YTKKeyValueItem *>*)getAllItemsFromTableDESC:(NSString *)tableName{
     if ([YTKKeyValueStore checkTableName:tableName] == NO) {
         return nil;
     }
@@ -264,6 +291,86 @@ static NSString *const DELETE_ITEMS_WITH_PREFIX_SQL = @"DELETE from %@ where id 
             item.itemObject = object;
         }
     }
+    return result;
+}
+- (NSArray <NSDictionary *>*)getAllObjectsFromTableDESC:(NSString *)tableName{
+    if ([YTKKeyValueStore checkTableName:tableName] == NO) {
+        return nil;
+    }
+    NSString * sql = [NSString stringWithFormat:SELECT_OBJECT_SQL_DESC, tableName];
+    __block NSMutableArray * result = [NSMutableArray array];
+    [_dbQueue inDatabase:^(FMDatabase *db) {
+        FMResultSet * rs = [db executeQuery:sql];
+        // parse json string to dict
+        NSError * error;
+        while ([rs next]) {
+            error = nil;
+            NSDictionary *object = [NSJSONSerialization JSONObjectWithData:[[rs stringForColumn:@"json"] dataUsingEncoding:NSUTF8StringEncoding]
+                                                                   options:(NSJSONReadingAllowFragments) error:&error];
+            if (error) {
+                debugLog(@"ERROR, faild to prase to json.");
+            } else {
+                [result addObject:object];
+            }
+        }
+        [rs close];
+    }];
+    return result;
+}
+
+- (NSArray <YTKKeyValueItem *>*)getAllItemsFromTableASC:(NSString *)tableName {
+    if ([YTKKeyValueStore checkTableName:tableName] == NO) {
+        return nil;
+    }
+    NSString * sql = [NSString stringWithFormat:SELECT_ALL_SQL_ASC, tableName];
+    __block NSMutableArray * result = [NSMutableArray array];
+    [_dbQueue inDatabase:^(FMDatabase *db) {
+        FMResultSet * rs = [db executeQuery:sql];
+        while ([rs next]) {
+            YTKKeyValueItem * item = [[YTKKeyValueItem alloc] init];
+            item.itemId = [rs stringForColumn:@"id"];
+            item.itemObject = [rs stringForColumn:@"json"];
+            item.createdTime = [rs dateForColumn:@"createdTime"];
+            [result addObject:item];
+        }
+        [rs close];
+    }];
+    // parse json string to object
+    NSError * error;
+    for (YTKKeyValueItem * item in result) {
+        error = nil;
+        id object = [NSJSONSerialization JSONObjectWithData:[item.itemObject dataUsingEncoding:NSUTF8StringEncoding]
+                                                    options:(NSJSONReadingAllowFragments) error:&error];
+        if (error) {
+            debugLog(@"ERROR, faild to prase to json.");
+        } else {
+            item.itemObject = object;
+        }
+    }
+    return result;
+}
+- (NSArray *)getAllObjectsFromTableASC:(NSString *)tableName{
+    if ([YTKKeyValueStore checkTableName:tableName] == NO) {
+        return nil;
+    }
+    NSString * sql = [NSString stringWithFormat:SELECT_OBJECT_SQL_ASC, tableName];
+    __block NSMutableArray * result = [NSMutableArray array];
+    [_dbQueue inDatabase:^(FMDatabase *db) {
+        FMResultSet * rs = [db executeQuery:sql];
+        // parse json string to dict
+        NSError * error;
+        while ([rs next]) {
+            error = nil;
+            NSDictionary *object = [NSJSONSerialization JSONObjectWithData:[[rs stringForColumn:@"json"] dataUsingEncoding:NSUTF8StringEncoding]
+                                                        options:(NSJSONReadingAllowFragments) error:&error];
+            if (error) {
+                debugLog(@"ERROR, faild to prase to json.");
+            } else {
+                [result addObject:object];
+            }
+        }
+        [rs close];
+    }];
     return result;
 }
 
