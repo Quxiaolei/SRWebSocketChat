@@ -356,11 +356,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SRWebSocketChat/ChatListViewController.m"
-            timestampString = "485078005.570227"
+            timestampString = "485084252.642893"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
             landmarkName = "-getTimeWithTimestamp:"
             landmarkType = "5">
          </BreakpointContent>
@@ -394,6 +394,22 @@
             startingLineNumber = "316"
             endingLineNumber = "316"
             landmarkName = "-collectionView:layout:heightForCellTopLabelAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SRWebSocketChat/ChatListViewController.m"
+            timestampString = "485083754.317295"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -13,7 +13,7 @@
 UITableViewDelegate,
 UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSArray *dataArray;
+@property (nonatomic, strong) NSMutableArray *dataArray;
 //@property (nonatomic,strong) ChatListModel *chatList;
 @property (nonatomic,strong) YTKKeyValueStore *store;
 @end
@@ -33,7 +33,7 @@ UITableViewDataSource>
     NSData *data1 = [NSData dataWithContentsOfFile:path1];
     NSDictionary *json1 = [NSJSONSerialization JSONObjectWithData:data1 options:0 error:nil];
     ChatListModel *chatList = [ChatListModel yy_modelWithJSON:json1];
-    _dataArray = chatList.messageArray;
+    _dataArray = [chatList.messageArray mutableCopy];
     
     YTKKeyValueStore *store = [[YTKKeyValueStore alloc] initDBWithName:@"test.db"];
     NSString *tableName = @"chatList_table";
@@ -98,7 +98,7 @@ UITableViewDataSource>
         ChatModel *model = [ChatModel yy_modelWithJSON:item.itemObject];
         [mutableArray addObject:model];
     }
-    _dataArray = [mutableArray copy];
+    _dataArray = mutableArray;
 //    [_store close];
     [_tableView reloadData];
 }
@@ -131,6 +131,21 @@ UITableViewDataSource>
     ChatDetailViewController *vc = [[ChatDetailViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
 }
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        [_dataArray removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+#pragma mark - 事件处理
 - (void)changeDate:(NSString *)dateStr
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
