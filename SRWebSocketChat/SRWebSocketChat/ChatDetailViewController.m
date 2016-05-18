@@ -331,17 +331,18 @@ UIActionSheetDelegate
 - (CGFloat)collectionView:(JSQMessagesCollectionView *)collectionView
                    layout:(JSQMessagesCollectionViewFlowLayout *)collectionViewLayout heightForMessageBubbleTopLabelAtIndexPath:(NSIndexPath *)indexPath
 {
-    JSQMessage *currentMessage = [self.messageArray objectAtIndex:indexPath.item];
-    if ([[currentMessage senderId] isEqualToString:self.senderId]) {
-        return 0.0f;
-    }
-    if (indexPath.item - 1 > 0) {
-        JSQMessage *previousMessage = [self.messageArray objectAtIndex:indexPath.item - 1];
-        if ([[previousMessage senderId] isEqualToString:[currentMessage senderId]]) {
-            return 0.0f;
-        }
-    }
-    return kJSQMessagesCollectionViewCellLabelHeightDefault;
+//    JSQMessage *currentMessage = [self.messageArray objectAtIndex:indexPath.item];
+//    if ([[currentMessage senderId] isEqualToString:self.senderId]) {
+//        return 0.0f;
+//    }
+//    if (indexPath.item - 1 > 0) {
+//        JSQMessage *previousMessage = [self.messageArray objectAtIndex:indexPath.item - 1];
+//        if ([[previousMessage senderId] isEqualToString:[currentMessage senderId]]) {
+//            return 0.0f;
+//        }
+//    }
+//    return kJSQMessagesCollectionViewCellLabelHeightDefault;
+    return CGFLOAT_MIN;
 }
 //单元格底部label高度
 - (CGFloat)collectionView:(JSQMessagesCollectionView *)collectionView
