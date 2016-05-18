@@ -59,7 +59,7 @@
     //    //Facebook服务
     ////    ws://127.0.0.1:9000/chat
     //    http://127.0.0.1/
-    _webSocket = [[SRWebSocket alloc]initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://127.0.0.1:9000/chat"]]];
+    _webSocket = [[SRWebSocket alloc]initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://172.16.101.42:9006/ws/bind?sid=31343763335E35313583439F34363935F31062333C33663A653821D3036833342BD34372613323D6162664622DD3661464616733731E63663563638F2B77695623105F643C36263A6633317322D839376B1392D23464634612D638663D9302D436336726435E33393553730F3330&did=1213"]]];
     _webSocket.delegate = self;
     [_webSocket open];
     
