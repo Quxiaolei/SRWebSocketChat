@@ -23,4 +23,9 @@
 #define kScreenSize           [[UIScreen mainScreen] bounds].size                 //(e.g. 320,480)
 #define kScreenWidth          [[UIScreen mainScreen] bounds].size.width           //(e.g. 320)
 #define kScreenHeight         [[UIScreen mainScreen] bounds].size.height
+
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue &0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00)>> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#define kBackGroundColor  UIColorFromRGB(0xf1f1f1)
+
+
 #endif /* SRWebSocketChat_pch */

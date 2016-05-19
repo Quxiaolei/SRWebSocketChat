@@ -196,11 +196,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SRWebSocketChat/ChatDetailViewController.m"
-            timestampString = "485233996.27021"
+            timestampString = "485335068.674656"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "381"
-            endingLineNumber = "381"
+            startingLineNumber = "386"
+            endingLineNumber = "386"
             landmarkName = "-composerTextView:shouldPasteWithSender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -212,11 +212,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SRWebSocketChat/ChatDetailViewController.m"
-            timestampString = "485018588.429227"
+            timestampString = "485335068.674656"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "-touchesBegan:withEvent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -228,11 +228,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SRWebSocketChat/ChatDetailViewController.m"
-            timestampString = "485073531.738901"
+            timestampString = "485335068.674656"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "300"
-            endingLineNumber = "300"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
             landmarkName = "-customAction:"
             landmarkType = "5">
          </BreakpointContent>
@@ -244,11 +244,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SRWebSocketChat/ChatDetailViewController.m"
-            timestampString = "485073531.738901"
+            timestampString = "485335068.674656"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "284"
-            endingLineNumber = "284"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
             landmarkName = "-collectionView:canPerformAction:forItemAtIndexPath:withSender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -260,11 +260,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SRWebSocketChat/ChatDetailViewController.m"
-            timestampString = "485073531.738901"
+            timestampString = "485335068.674656"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "291"
-            endingLineNumber = "291"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
             landmarkName = "-collectionView:performAction:forItemAtIndexPath:withSender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -276,11 +276,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SRWebSocketChat/ChatDetailViewController.m"
-            timestampString = "485019060.173977"
+            timestampString = "485335068.674656"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "-refRightBarBtn"
             landmarkType = "5">
          </BreakpointContent>
@@ -292,11 +292,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SRWebSocketChat/ChatDetailViewController.m"
-            timestampString = "485073531.738901"
+            timestampString = "485335068.674656"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "-rightBarBtn"
             landmarkType = "5">
          </BreakpointContent>
@@ -308,11 +308,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SRWebSocketChat/ChatDetailViewController.m"
-            timestampString = "485021373.842778"
+            timestampString = "485335068.674656"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "-refRightBarBtn"
             landmarkType = "5">
          </BreakpointContent>
@@ -356,11 +356,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SRWebSocketChat/ChatDetailViewController.m"
-            timestampString = "485080245.527148"
+            timestampString = "485335068.674656"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "320"
-            endingLineNumber = "320"
+            startingLineNumber = "325"
+            endingLineNumber = "325"
             landmarkName = "-collectionView:layout:heightForCellTopLabelAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -372,11 +372,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SRWebSocketChat/ChatDetailViewController.m"
-            timestampString = "485080074.90158"
+            timestampString = "485335068.674656"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "316"
-            endingLineNumber = "316"
+            startingLineNumber = "321"
+            endingLineNumber = "321"
             landmarkName = "-collectionView:layout:heightForCellTopLabelAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -404,7 +404,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/JSQMessagesViewController/JSQMessagesViewController/Factories/JSQMessagesBubbleImageFactory.m"
-            timestampString = "485234701.559784"
+            timestampString = "485320605.39597"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"

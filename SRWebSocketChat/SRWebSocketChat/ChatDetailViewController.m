@@ -57,6 +57,7 @@ UIActionSheetDelegate
     self.navigationItem.rightBarButtonItems = @[
                                                 [[UIBarButtonItem alloc]initWithTitle:@"发消息" style:UIBarButtonItemStylePlain target:self action:@selector(rightBarBtn)],
                                                 [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refRightBarBtn)]];
+    self.collectionView.backgroundColor = kBackGroundColor;
     //绘制气泡
     JSQMessagesBubbleImageFactory *bubbleFactory = [[JSQMessagesBubbleImageFactory alloc] init];
     self.outgoingBubbleImageData = [bubbleFactory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
@@ -269,7 +270,7 @@ UIActionSheetDelegate
         if ([msg.senderId isEqualToString:self.senderId]) {
             cell.textView.textColor = [UIColor blackColor];
         }else {
-            cell.textView.textColor = [UIColor whiteColor];
+            cell.textView.textColor = [UIColor blackColor];
         }
         cell.textView.linkTextAttributes = @{ NSForegroundColorAttributeName : cell.textView.textColor,
                                               NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle | NSUnderlinePatternSolid) };
