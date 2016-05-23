@@ -19,6 +19,8 @@
 
 #import "ChatModel.h"
 
+#define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
+
 #define kScreenBounds         [[UIScreen mainScreen] bounds]
 #define kScreenSize           [[UIScreen mainScreen] bounds].size                 //(e.g. 320,480)
 #define kScreenWidth          [[UIScreen mainScreen] bounds].size.width           //(e.g. 320)

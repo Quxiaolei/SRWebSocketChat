@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2566F54B1CF02E0800B198B1 /* ChatListPreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2566F54A1CF02E0800B198B1 /* ChatListPreViewController.m */; };
 		2568955D1CE57F5600C6F202 /* DataBaseTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2568955C1CE57F5600C6F202 /* DataBaseTool.m */; };
 		256895621CE5B70F00C6F202 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 256895611CE5B70F00C6F202 /* User.m */; };
 		259A221B1CE30BA300288C7A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 259A221A1CE30BA300288C7A /* main.m */; };
@@ -31,6 +32,8 @@
 
 /* Begin PBXFileReference section */
 		225822B24FD7E7B403398418 /* Pods_SRWebSocketChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SRWebSocketChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2566F5491CF02E0800B198B1 /* ChatListPreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatListPreViewController.h; sourceTree = "<group>"; };
+		2566F54A1CF02E0800B198B1 /* ChatListPreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatListPreViewController.m; sourceTree = "<group>"; };
 		2568955B1CE57F5600C6F202 /* DataBaseTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseTool.h; sourceTree = "<group>"; };
 		2568955C1CE57F5600C6F202 /* DataBaseTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseTool.m; sourceTree = "<group>"; };
 		256895601CE5B70F00C6F202 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -133,6 +136,8 @@
 				25F6511D1CE73AD200A13387 /* DBTestViewController.m */,
 				25F6511F1CE73CEF00A13387 /* ChatListViewController.h */,
 				25F651201CE73CEF00A13387 /* ChatListViewController.m */,
+				2566F5491CF02E0800B198B1 /* ChatListPreViewController.h */,
+				2566F54A1CF02E0800B198B1 /* ChatListPreViewController.m */,
 				25F651281CE7649200A13387 /* ChatDetailViewController.h */,
 				25F651291CE7649200A13387 /* ChatDetailViewController.m */,
 				2568955F1CE57FB100C6F202 /* Network */,
@@ -217,7 +222,12 @@
 				TargetAttributes = {
 					259A22151CE30BA300288C7A = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = XRMC2ZE3HJ;
+						DevelopmentTeam = 487E5XEXJC;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -314,6 +324,7 @@
 				2568955D1CE57F5600C6F202 /* DataBaseTool.m in Sources */,
 				256895621CE5B70F00C6F202 /* User.m in Sources */,
 				25F6512A1CE7649200A13387 /* ChatDetailViewController.m in Sources */,
+				2566F54B1CF02E0800B198B1 /* ChatListPreViewController.m in Sources */,
 				25F6511A1CE738EA00A13387 /* NetWorkViewController.m in Sources */,
 				25F651221CE73CEF00A13387 /* ChatListViewController.m in Sources */,
 				259A221E1CE30BA300288C7A /* AppDelegate.m in Sources */,
@@ -433,13 +444,13 @@
 			baseConfigurationReference = FDCA1B72E8994100AB701C25 /* Pods-SRWebSocketChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Qing he Wang (89M63WCKXY)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SRWebSocketChat/SRWebSocketChat.pch";
 				INFOPLIST_FILE = SRWebSocketChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = qxlTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zritc.midas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -449,13 +460,13 @@
 			baseConfigurationReference = 6F68E037DEBB12F5BC5EB662 /* Pods-SRWebSocketChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Qing he Wang (89M63WCKXY)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SRWebSocketChat/SRWebSocketChat.pch";
 				INFOPLIST_FILE = SRWebSocketChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = qxlTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zritc.midas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

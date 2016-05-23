@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>ChatTest</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -12,8 +14,6 @@
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
-	<key>CFBundleDisplayName</key>
-	<string>ChatTest</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -36,6 +36,39 @@
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
+	</array>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemType</key>
+			<string>test1</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>title1</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Subtitle1</string>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeHome</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemType</key>
+			<string>test2</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>title2</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Subtitle2</string>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeSearch</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemType</key>
+			<string>test3</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>title3</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Subtitle3</string>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeBookmark</string>
+		</dict>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>

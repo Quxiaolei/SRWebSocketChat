@@ -8,10 +8,12 @@
 
 #import "ChatListViewController.h"
 #import "ChatDetailViewController.h"
+#import "ChatListPreViewController.h"
 @interface ChatListViewController ()
 <
 UITableViewDelegate,
-UITableViewDataSource>
+UITableViewDataSource,
+UIViewControllerPreviewingDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 //@property (nonatomic,strong) ChatListModel *chatList;
@@ -25,9 +27,9 @@ UITableViewDataSource>
     [self initData];
     [self createUI];
 }
+
 - (void)initData
 {
-    
     [self getTimeWithTimestamp:@"1463384109"];
     NSString *path1 = [[NSBundle mainBundle] pathForResource:@"chatList" ofType:@"json"];
     NSData *data1 = [NSData dataWithContentsOfFile:path1];
@@ -117,6 +119,9 @@ UITableViewDataSource>
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier];
+        if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable){
+            [self registerForPreviewingWithDelegate:self sourceView:cell];
+        }
     }
     ChatModel *model = _dataArray[indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"%ld,%@,:%llu",indexPath.row,model.userName,model.userID];
@@ -143,6 +148,29 @@ UITableViewDataSource>
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return YES;
+}
+
+#pragma mark - UIViewControllerPreviewingDelegate
+//peek手势
+- (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location
+{
+    NSIndexPath *indexPath = [_tableView indexPathForCell:(UITableViewCell* )[previewingContext sourceView]];
+    NSLog(@"李磊-section:%ld,index:%ld",(long)indexPath.section,(long)indexPath.row);
+    
+    ChatListPreViewController *childVC = [[ChatListPreViewController alloc] init];
+    
+    //在子视图中显示的某些部分
+    //    childVC.preferredContentSize = CGSizeMake(0.0f,300.0f);
+    //高亮区域
+    //    CGRect rect = CGRectMake(0, indexPath.row * _tableView.rowHeight, kScreenWidth,_tableView.rowHeight);
+    //    previewingContext.sourceRect = rect;
+    return childVC;
+}
+//pop的代理方法，在此处可对将要进入的vc进行处理，比如隐藏tabBar；
+- (void)previewingContext:(id <UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit
+{
+    viewControllerToCommit.hidesBottomBarWhenPushed = YES;
+    [self showViewController:viewControllerToCommit sender:self];
 }
 
 #pragma mark - 事件处理
