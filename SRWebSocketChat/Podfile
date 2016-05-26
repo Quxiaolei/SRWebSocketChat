@@ -7,4 +7,5 @@ target 'SRWebSocketChat' do
   pod 'YTKKeyValueStore'
   pod 'YYModel'
   pod 'JSQMessagesViewController'
+  pod 'ReactiveCocoa', '~> 2.5'
 end

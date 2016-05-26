@@ -26,6 +26,13 @@ PODS:
   - JSQMessagesViewController (7.2.0):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
   - SocketRocket (0.5.0)
   - YTKKeyValueStore (0.1.2):
     - FMDB (~> 2.0)
@@ -34,6 +41,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.6)
   - JSQMessagesViewController
+  - ReactiveCocoa (~> 2.5)
   - SocketRocket (~> 0.5)
   - YTKKeyValueStore
   - YYModel
@@ -43,10 +51,11 @@ SPEC CHECKSUMS:
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   JSQMessagesViewController: 73cab48aa92fc2d512f3b6724f3425cc47a19eb5
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SocketRocket: 2c51efccd2d73c99a923407ca4b06e7e9da95dbf
   YTKKeyValueStore: 4d002941540dd5108fa23009b71e0f2f937f7a0f
   YYModel: 63142c2f07c5c8c9d1c261689cf3827ea6ab2886
 
-PODFILE CHECKSUM: 38284e6dced948633c1153141f654013bda24129
+PODFILE CHECKSUM: 2f3a8d30d8c0dfbe4135cd4673ee8ecdad79c849
 
 COCOAPODS: 1.0.0.beta.6

@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ReactiveCocoa.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SocketRocket.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,6 +52,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>035823A94D8A03EDE9C8A383115FB157</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>23CF27B2BA6AC7125EFFEDA8C5AA819F</key>
 		<dict>
 			<key>primary</key>
@@ -57,12 +67,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>51BE22252ED8DED5ED55F9B89BB4CCA5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>76EDAB8A0DBC6C7029048696355B3DDC</key>
+		<key>89FFE4EA6DF9FD7197CD063ED934F2D6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,17 +77,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BD651722068CCF85E329E9BE4031C872</key>
+		<key>A3086B36BFB3B2507036FBF2F2952A97</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C66C4A96301C6A3247F56C2BB3BED21D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E36ADE225DB3752CA3E52A7DCE5B723C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>EDA125ADA52355B7CA6DF7BA96918357</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FAB77FDD7F7CE64592DE6443F0B67A3D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
